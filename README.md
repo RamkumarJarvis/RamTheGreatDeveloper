@@ -10,7 +10,7 @@
 - 📄 Know about my experiences <br>
  **Frontend Mentor** https://www.frontendmentor.io/profile/RamTheGreatDeveloper <br>
  **CSSBattle** https://cssbattle.dev/player/ShQEa7Ver2O529jdxeKkgWVSq143<br>
-<a href="https://app.daily.dev/Karuppu_kulla"><img src="https://api.daily.dev/devcards/3197cc9b64f44051baf681685e13b33f.png?r=kbf" width="400" alt="Ram kumar's Dev Card"/></a>
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://linkedin.com/in/ram kumar" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ram kumar" height="30" width="40" /></a>
