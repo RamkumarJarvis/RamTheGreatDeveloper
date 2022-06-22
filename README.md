@@ -1,7 +1,7 @@
 <h1 align="center">Hey <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px" height="25px">,There</h1>
       Hi,I'm Ram Kumar, a passionate self-taught front end engineer. I am an open-source enthusiast and maintainer. I learned a lot from the open-source community and i love how collaboration and knowledge sharing happened through open-source. <br /> <br />
-<img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
-
+<!-- <img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" /> -->
+<a href="https://app.daily.dev/Karuppu_kulla"><img align="right"  src="https://github.com/RamTheGreatDeveloper/RamTheGreatDeveloper/blob/main/devcard.svg" width="500" height="320"  alt="Ram kumar's Dev Card"/></a>
 - 🔭 I’m currently working on something cool :wink:
 
 - 🌱 I’m currently learning **React and Angular**
@@ -11,7 +11,7 @@
 - 📄 Know about my experiences <br>
  **Frontend Mentor** https://www.frontendmentor.io/profile/RamTheGreatDeveloper <br>
  **CSSBattle** https://cssbattle.dev/player/ShQEa7Ver2O529jdxeKkgWVSq143<br>
-<a href="https://app.daily.dev/Karuppu_kulla"><img src="https://github.com/RamTheGreatDeveloper/RamTheGreatDeveloper/blob/main/devcard.svg" width="400" alt="Ram kumar's Dev Card"/></a>
+<!-- <a href="https://app.daily.dev/Karuppu_kulla"><img src="https://github.com/RamTheGreatDeveloper/RamTheGreatDeveloper/blob/main/devcard.svg" width="400" alt="Ram kumar's Dev Card"/></a> -->
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
