@@ -1,0 +1,1398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light} body{margin:0;font:14px system-ui,sans-serif} img{max-width:100%} [hidden]{display:none!important}</style>
+<title>AI Try-On Mirror Sticker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root {
+  /* Layout: one reading column (~42rem) inside a wider frame (~68rem) that figures and tables use; spec-sheet rhythm with fashion-plate headings */
+  --bg: #f1f4f2;
+  --surface: #fbfcfb;
+  --sunken: #e5ebe8;
+  --fg: #16201c;
+  --muted: #55635d;
+  --line: #d2dad6;
+  --line-strong: #a9b6b0;
+  --accent: #1c6b58;
+  --accent-soft: #dbeae4;
+  --chalk: #d39f26;
+  --chalk-soft: #f6e8c4;
+  --hazard: #b2412c;
+  --hazard-soft: #f5ded7;
+  --glass: #dfe8e4;
+  --font-display: "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1412; --surface: #141c19; --sunken: #1a2420; --fg: #e2eae6; --muted: #9aa9a2;
+    --line: #27322e; --line-strong: #44524c; --accent: #5ec2a5; --accent-soft: #173530;
+    --chalk: #e3b952; --chalk-soft: #3a311d; --hazard: #e6806a; --hazard-soft: #3b221d; --glass: #1e2b27;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1412; --surface: #141c19; --sunken: #1a2420; --fg: #e2eae6; --muted: #9aa9a2;
+  --line: #27322e; --line-strong: #44524c; --accent: #5ec2a5; --accent-soft: #173530;
+  --chalk: #e3b952; --chalk-soft: #3a311d; --hazard: #e6806a; --hazard-soft: #3b221d; --glass: #1e2b27;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.page { max-width: 68rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 48px 96px; }
+.prose { max-width: 42rem; display: grid; gap: 14px; }
+.prose p, .prose ul, .prose ol { margin: 0; }
+.prose ul, .prose ol { padding-left: 1.2em; display: grid; gap: 6px; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.6rem, 8vw, 4.8rem); line-height: 1; letter-spacing: -0.015em; }
+h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.08; }
+h3 { font-family: var(--font-body); font-weight: 600; font-size: 1.08rem; margin: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0; }
+.lede { font-size: 1.2rem; line-height: 1.5; max-width: 40rem; margin: 0; color: var(--fg); }
+.muted { color: var(--muted); }
+.small { font-size: 14.5px; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+header.hero { display: grid; gap: 20px; padding-bottom: 36px; }
+.update { max-width: 46rem; margin: 0; padding: 12px 16px; background: var(--accent-soft); border-radius: 6px; font-size: 15px; }
+.verdict { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; border-top: 2px solid var(--fg); margin: 8px 0 0; max-width: 54rem; }
+.verdict dt, .verdict dd { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.verdict dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-right: 16px; padding-top: 15px; }
+.verdict dd { min-width: 0; }
+.verdict strong { font-weight: 600; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--font-mono); font-size: 13px; }
+nav.toc a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+nav.toc a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+section.sec { display: grid; gap: 22px; padding-top: 56px; margin-top: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 8px; max-width: 46rem; }
+.fig { margin: 0; display: grid; gap: 12px; min-width: 0; }
+.canvas { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; overflow-x: auto; }
+.canvas svg { display: block; width: 100%; height: auto; }
+.canvas.scroll svg { min-width: 760px; }
+.canvas.scroll-sm svg { min-width: 480px; }
+.fig.narrow { max-width: 44rem; }
+.fig.mid { max-width: 58rem; }
+figcaption { font-size: 14.5px; line-height: 1.55; color: var(--muted); max-width: 48rem; }
+figcaption b { color: var(--fg); font-weight: 600; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 16px; }
+.trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 16px; }
+.panel { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.panel-title { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; margin: 0; }
+.panel-title.bad { color: var(--hazard); }
+.panel-title.part { color: var(--muted); }
+.panel-title.good { color: var(--accent); }
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 24px 32px; align-items: start; }
+.split > * { min-width: 0; }
+
+/* diagrams */
+svg.dg { color: var(--fg); }
+svg.dg text { font-family: var(--font-mono); font-size: 11.5px; fill: currentColor; }
+svg.dg .tl { font-family: var(--font-body); font-weight: 600; font-size: 12.5px; }
+svg.dg .tt { font-family: var(--font-body); font-weight: 600; font-size: 13px; }
+svg.dg .cap { font-size: 10.5px; letter-spacing: .09em; }
+svg.dg .sm { font-size: 10.5px; }
+svg.dg .mu { fill: var(--muted); }
+svg.dg .ac { fill: var(--accent); }
+svg.dg .hz { fill: var(--hazard); }
+svg.dg .ink { fill: currentColor; }
+svg.dg .paper { fill: var(--surface); }
+svg.dg .chalk { fill: var(--chalk); }
+svg.dg .body { fill: var(--line-strong); }
+svg.dg .door { fill: var(--sunken); stroke: var(--line-strong); stroke-width: 1; }
+svg.dg .ln { stroke: currentColor; fill: none; stroke-width: 1.2; }
+svg.dg .ln-mu { stroke: var(--muted); fill: none; stroke-width: 1; }
+svg.dg .ln-ac { stroke: var(--accent); fill: none; stroke-width: 1.6; }
+svg.dg .ln-body { stroke: var(--line-strong); stroke-width: 7; stroke-linecap: round; fill: none; }
+svg.dg .tick-ch { stroke: var(--chalk); stroke-width: 3; }
+svg.dg .bus { stroke: var(--accent); stroke-width: 3; }
+svg.dg .dash { stroke-dasharray: 5 4; }
+svg.dg .dot { stroke-dasharray: 1.5 3.5; stroke-linecap: round; }
+svg.dg .box { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1; }
+svg.dg .head { fill: var(--surface); stroke: currentColor; stroke-width: 1.2; }
+svg.dg .glass { fill: var(--glass); stroke: var(--line-strong); stroke-width: 1; }
+svg.dg .screen { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; }
+svg.dg .lcd { fill: #15201c; stroke: var(--accent); stroke-width: 1.4; }
+svg.dg .lit { fill: #e8ece9; }
+svg.dg .zone-hz { fill: var(--hazard-soft); stroke: var(--hazard); stroke-width: 1.2; stroke-dasharray: 6 4; }
+svg.dg .zone-ac { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 6 4; }
+svg.dg .box-hz { fill: var(--hazard-soft); stroke: var(--hazard); stroke-width: 1.2; }
+
+/* tables */
+.table-wrap { overflow-x: auto; border-top: 2px solid var(--fg); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 1.45; }
+th { font-family: var(--font-mono); font-weight: 500; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 10px 12px 8px; border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
+td { padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child, th:first-child { padding-left: 0; }
+td.num, th.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+td .sub { display: block; color: var(--muted); font-size: 13.5px; }
+tr.total td { border-top: 2px solid var(--fg); border-bottom: none; font-weight: 600; }
+tr.pick td { background: var(--accent-soft); }
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 11px; line-height: 1.4; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); white-space: nowrap; }
+.pill.on { color: var(--accent); border-color: var(--accent); }
+.pill.off { color: var(--hazard); border-color: var(--hazard); }
+.pill.warn { color: var(--fg); border-color: var(--chalk); background: var(--chalk-soft); }
+
+/* range bars: one scale per table, shared by header ticks and every row */
+table.bars th.bar-h, table.bars td.bar { width: 30%; min-width: 190px; padding-left: 12px; padding-right: 12px; }
+table.bars { min-width: 680px; }
+th.bar-h .ticks { position: relative; height: 1.3em; }
+th.bar-h .ticks span { position: absolute; top: 0; transform: translateX(-50%); }
+th.bar-h .ticks span:first-child { left: 0; transform: none; }
+th.bar-h .ticks span:last-child { left: 100%; transform: translateX(-100%); }
+.rbar { position: relative; height: 16px; margin-top: 3px; background-image: linear-gradient(to right, var(--line) 0 1px, transparent 1px); background-size: 25% 100%; background-repeat: repeat-x; box-shadow: inset -1px 0 0 var(--line); }
+.rbar span { position: absolute; top: 3px; bottom: 3px; min-width: 6px; border-radius: 4px; }
+.rbar .src, .key.src { background: var(--accent); }
+.rbar .est, .key.est { background: var(--accent); opacity: .42; }
+.key { display: inline-block; width: 18px; height: 10px; border-radius: 3px; vertical-align: -1px; margin-right: 4px; }
+
+/* prompts */
+.prompt-card { display: grid; gap: 10px; }
+.prompt-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.prompt { margin: 0; background: var(--sunken); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+button.copy { font: 500 13px var(--font-mono); color: var(--accent); background: transparent; border: 1px solid var(--accent); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+button.copy:hover { background: var(--accent-soft); }
+
+/* calculator */
+.calc { display: grid; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+.calc-inputs { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+.calc label { display: grid; gap: 4px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.calc input, .calc select { font: 500 16px var(--font-mono); padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--bg); color: var(--fg); }
+.calc input { width: 8.5rem; }
+.calc select { min-width: 13rem; max-width: 100%; }
+.calc dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 15px; }
+.calc dt { font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; padding-top: 3px; }
+.calc dd { margin: 0; min-width: 0; }
+.calc dd b { font-family: var(--font-mono); font-weight: 500; }
+
+/* lists and notes */
+.note { border-left: 3px solid var(--chalk); padding: 4px 0 4px 16px; max-width: 46rem; margin: 0; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 16px; list-style: none; padding: 0; margin: 0; }
+.step { border-top: 2px solid var(--fg); padding-top: 12px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.step .when { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.step p { margin: 0; }
+details.more { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 28px; }
+details.more > summary { cursor: pointer; list-style: none; display: grid; gap: 6px; max-width: 46rem; }
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary .toggle { font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
+details.more > summary .toggle::before { content: "+ "; }
+details.more[open] > summary .toggle::before { content: "− "; }
+details.more .inner { display: grid; gap: 22px; margin-top: 24px; }
+.src-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 24px 32px; align-items: start; }
+.src-groups > div { display: grid; gap: 10px; min-width: 0; align-content: start; }
+.src-groups h3 { font-size: 13px; font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.sources { font-size: 14px; line-height: 1.45; padding-left: 1.1em; margin: 0; display: grid; gap: 6px; }
+.sources li { overflow-wrap: anywhere; }
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); max-width: 46rem; }
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .verdict { grid-template-columns: 1fr; }
+  .verdict dt { padding-bottom: 0; border-bottom: none; }
+  .canvas { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header class="hero">
+  <p class="eyebrow">Research brief · October 2026 · revised for the sticker idea</p>
+  <h1>AI <em>Try-On</em> Mirror Sticker</h1>
+  <p class="lede">An add-on you stick onto the mirror you already own. It makes the mirror respond to touch, lists the clothes you own, and shows you wearing any of them as you move. This brief checks whether it exists, what a sticker can physically do, which parts you need, how to keep it shock-safe, and what it costs.</p>
+  <p class="update"><b>Revised:</b> the first version researched a complete smart mirror. You clarified that people want an overlay for the mirror they already have, so the research was redone for that. The full-mirror findings are kept near the end for comparison.</p>
+  <dl class="verdict">
+    <dt>Already exists?</dt>
+    <dd><strong>No.</strong> Nothing on sale adds a screen and camera to an existing mirror for outfit try-on, and no crowdfunding for one was found from 2024–26. The nearest things are magnetic or suction phone mounts for mirrors, touch panels sold to shops, and the try-on mirrors and phone apps in the market scan below.</dd>
+    <dt>Can a sticker do it?</dt>
+    <dd><strong>Half of it.</strong> A thin film or frame can make your mirror touch-sensitive. No film can show you wearing the clothes: see-through LED film is coarse, can only add light, and sits on the glass while your reflection sits behind it. What works is a slim screen and a camera mounted over part of the mirror.</dd>
+    <dt>Recommended kit</dt>
+    <dd><strong>A magnetic dock stuck to the mirror, holding a budget 11-inch tablet</strong> that is the screen, camera and computer in one: about ₹12,000–17,700. A dock for the user's own phone or tablet costs ₹499–1,499.</dd>
+    <dt>How real it looks</dt>
+    <dd>The live view is fast but approximate. A photo-real look takes 5–20 seconds through a cloud model at about ₹6–7 each. On an 11-inch tablet you appear about a quarter of your reflection's size.</dd>
+    <dt>Safe to touch?</dt>
+    <dd>Yes. Only a certified USB-C adapter at the socket carries 230 V, and nothing on the mirror runs above 20 V. The bigger risk is a fall: keep anything held to glass by tape under about 1.3 kg and add a safety strap.</dd>
+    <dt>Biggest risks</dt>
+    <dd>A camera where people change clothes, free phone try-on from Google and others, and whether people keep their digital wardrobe up to date.</dd>
+  </dl>
+  <nav class="toc" aria-label="Contents">
+    <a href="#idea">Your idea</a>
+    <a href="#prompts">Image prompts</a>
+    <a href="#sticker">Can a sticker do it?</a>
+    <a href="#exists">Does it exist?</a>
+    <a href="#software">How it works</a>
+    <a href="#kit">The kit</a>
+    <a href="#safety">Safety</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#cost">Cost</a>
+    <a href="#plan">Build plan</a>
+    <a href="#full-mirror">Full-mirror version</a>
+    <a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<section class="sec" id="idea">
+  <div class="sec-head">
+    <p class="eyebrow">Your idea</p>
+    <h2>A sticker for the mirror you already own</h2>
+  </div>
+  <div class="split">
+    <div class="prose">
+      <p><b>The product, as I now understand it:</b></p>
+      <ul>
+        <li>An add-on that sticks onto a mirror people already have: a bedroom wall mirror, an almirah door or a dressing table. Nobody has to buy a new mirror.</li>
+        <li>It makes the mirror a touchscreen, so you can tap through the clothes you own.</li>
+        <li>A small camera sees you, and AI shows you wearing the selected outfit and follows your movement.</li>
+        <li>It suggests colour combinations and dress-code-appropriate outfits, including influencer-style looks rebuilt from your own clothes.</li>
+      </ul>
+      <p><b>The problem holds up, but the numbers are smaller than an hour a day.</b> The only time-use surveys found are UK polls of women from 2015–16: about 12–17 minutes choosing an outfit on a weekday morning and about 27 minutes before a night out. No Indian survey was found. The hour-long sessions are most likely the high-stakes moments: weddings, festivals, nights out, interviews.</p>
+      <p>Two related pains have better evidence. Clothes go unworn: an OsloMet study in India found 1 in 4 people use no more than 40% of their wardrobe. And people avoid repeating outfits seen online: 43% of 18–35-year-olds did in a 2026 German survey. Among Indian Gen Z shoppers, Instagram is the most influential platform (44%), though only 6% say influencers are their main reason to buy.</p>
+    </div>
+    <figure class="fig">
+      <div class="canvas scroll-sm">
+        <svg class="dg" viewBox="0 0 520 540" role="img" aria-label="Front view drawn to scale: a typical almirah-door mirror, about 38 by 150 centimetres, with the person's reflection at half their height. An 11-inch tablet on a magnetic dock sits over the right shoulder of the reflection, held by a safety tether over the door top, with an optional cable to a USB-C adapter at the wall socket.">
+          <line class="ln-mu" x1="40" y1="510" x2="40" y2="30"/>
+          <g class="ln-mu">
+            <line x1="35" y1="510" x2="45" y2="510"/>
+            <line x1="35" y1="390" x2="45" y2="390"/>
+            <line x1="35" y1="270" x2="45" y2="270"/>
+            <line x1="35" y1="150" x2="45" y2="150"/>
+            <line x1="35" y1="30" x2="45" y2="30"/>
+          </g>
+          <g class="mu" text-anchor="end">
+            <text x="30" y="514">0</text>
+            <text x="30" y="394">50</text>
+            <text x="30" y="274">100</text>
+            <text x="30" y="154">150</text>
+            <text x="30" y="34">200</text>
+          </g>
+          <text class="mu" x="40" y="18" text-anchor="middle">cm</text>
+          <line class="ln" x1="40" y1="510" x2="500" y2="510"/>
+          <text class="mu" x="500" y="530" text-anchor="end">floor</text>
+
+          <rect class="door" x="176" y="42" width="112" height="464" rx="2"/>
+          <rect class="glass" x="186" y="54" width="92" height="360" rx="1"/>
+
+          <line class="ln-body" x1="209" y1="146" x2="203" y2="212"/>
+          <line class="ln-body" x1="255" y1="146" x2="261" y2="212"/>
+          <rect class="body" x="217" y="210" width="12" height="96" rx="3"/>
+          <rect class="body" x="235" y="210" width="12" height="96" rx="3"/>
+          <ellipse class="body" cx="222" cy="309" rx="8" ry="3"/>
+          <ellipse class="body" cx="242" cy="309" rx="8" ry="3"/>
+          <rect class="body" x="228" y="127" width="8" height="10"/>
+          <path class="body" d="M214 136 H250 L257 148 L256 214 H208 L207 148 Z"/>
+          <circle class="head" cx="232" cy="116" r="13"/>
+
+          <line class="ln-mu dot" x1="256" y1="124" x2="256" y2="42"/>
+          <rect class="lcd" x="238" y="124" width="36" height="57" rx="3"/>
+          <circle class="lit" cx="256" cy="140" r="3.5"/>
+          <path class="chalk" d="M251.5 145 H260.5 L262 149 L261.5 163 H250.5 L250 149 Z"/>
+          <rect class="lit" x="252.3" y="163" width="2.8" height="12" rx="1"/>
+          <rect class="lit" x="256.9" y="163" width="2.8" height="12" rx="1"/>
+          <circle class="lit" cx="256" cy="128.5" r="1.3"/>
+
+          <path class="ln-mu dash" d="M270 181 V470 H330"/>
+          <rect class="box" x="330" y="458" width="16" height="24" rx="2"/>
+          <rect class="box-hz" x="346" y="461" width="18" height="18" rx="2"/>
+
+          <g class="ln-mu">
+            <line x1="152" y1="54" x2="152" y2="414"/>
+            <line x1="146" y1="54" x2="158" y2="54"/>
+            <line x1="146" y1="414" x2="158" y2="414"/>
+            <line x1="186" y1="430" x2="278" y2="430"/>
+            <line x1="186" y1="424" x2="186" y2="436"/>
+            <line x1="278" y1="424" x2="278" y2="436"/>
+          </g>
+          <text class="mu" x="144" y="230" text-anchor="end">mirror</text>
+          <text x="144" y="245" text-anchor="end">150 cm</text>
+          <text x="232" y="450" text-anchor="middle">38 cm</text>
+
+          <g class="ln-mu">
+            <line x1="258" y1="70" x2="296" y2="70"/>
+            <line x1="275" y1="150" x2="296" y2="138"/>
+            <line x1="249" y1="252" x2="296" y2="246"/>
+            <line x1="279" y1="360" x2="296" y2="352"/>
+          </g>
+          <text class="tl" x="300" y="66">Safety tether</text>
+          <text class="mu" x="300" y="81">loops over the door top</text>
+          <text class="tl" x="300" y="134">11″ tablet on a magnetic dock</text>
+          <text class="mu" x="300" y="149">screen, camera and computer</text>
+          <text class="tl" x="300" y="242">Your reflection</text>
+          <text class="mu" x="300" y="257">half your height on the glass</text>
+          <text class="tl" x="300" y="348">Almirah-door mirror</text>
+          <text class="mu" x="300" y="363">about 38 × 150 cm (typical)</text>
+          <text class="tl" x="370" y="468">USB-C adapter</text>
+          <text class="mu" x="370" y="483">or run on battery</text>
+        </svg>
+      </div>
+      <figcaption><b>Front view, to scale.</b> An 11-inch tablet on a magnetic dock covers a corner of your reflection while you use it, then snaps off, leaving only a thin plate on the glass. On the tablet you appear about a quarter of your reflection's size. The size check below works out other screens.</figcaption>
+    </figure>
+  </div>
+
+  <div class="calc" id="calc">
+    <h3>Size check: how big you look on the screen</h3>
+    <div class="calc-inputs">
+      <label for="calc-h">Your height (cm)<input id="calc-h" type="number" inputmode="numeric" min="120" max="210" step="1" value="170"></label>
+      <label for="calc-s">Screen on the mirror<select id="calc-s">
+        <option value="15.45">6.7-inch phone</option>
+        <option value="23.69" selected>11-inch tablet</option>
+        <option value="34.53">15.6-inch monitor</option>
+        <option value="47.60">21.5-inch screen</option>
+        <option value="59.77">27-inch screen</option>
+        <option value="95.20">43-inch screen</option>
+      </select></label>
+      <label for="calc-d">Standing distance (m)<input id="calc-d" type="number" inputmode="decimal" min="0.8" max="3.5" step="0.1" value="1.5"></label>
+    </div>
+    <dl id="calc-out" aria-live="polite">
+      <dt>Your reflection</dt><dd><b id="o-refl">85 cm</b> tall on the glass, at any distance</dd>
+      <dt>On the screen</dt><dd>you appear <b id="o-on">22 cm</b> tall in portrait: <b id="o-pct">26%</b> of your reflection</dd>
+      <dt>Full mirror size</dt><dd>needs a <b id="o-size">43-inch</b> screen in portrait <span class="muted" id="o-diag">(41.5″ minimum)</span></dd>
+      <dt>Camera lens</dt><dd><b id="o-fov1">93°</b> vertical view if level at eye height, or <b id="o-fov2">56°</b> if tilted down <b id="o-tilt">21°</b></dd>
+    </dl>
+    <p class="small muted" style="margin:0">A reflection is always half your height on the glass, because it appears twice as far away as the glass itself. The size on screen allows 8% head and foot room; screens are portrait 16:9 except the 19.5:9 phone and 16:10 tablet. Eye height is taken as 93.6% of body height.</p>
+  </div>
+</section>
+
+<section class="sec" id="prompts">
+  <div class="sec-head">
+    <p class="eyebrow">Visualise it</p>
+    <h2>Image-generation prompts</h2>
+    <p class="muted" style="margin:0">Written for any current image model (ChatGPT image generation, Gemini/Imagen, Midjourney, Flux, Higgsfield). Use the aspect ratio shown. Short on-image labels render best; keep them in quotes.</p>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-head"><h3>1 · The kit in use, photoreal <span class="muted mono small">4:5</span></h3><button class="copy" type="button" data-copy="p1">Copy prompt</button></div>
+    <pre class="prompt" id="p1">Photorealistic lifestyle product photo in a modest modern Indian bedroom. A young Indian man in his early 20s stands about 1.5 m from a steel almirah (wardrobe) whose door has a tall built-in mirror. Attached to the mirror at chest-to-eye height, slightly to the right, is a slim 11-inch tablet in portrait on a thin magnetic dock, with a small safety strap looping over the top of the door. The tablet shows a live, mirrored video of him wearing a navy blazer over a white shirt, while in reality he wears a plain grey t-shirt; a vertical strip of his own clothes as cut-out thumbnails runs along the tablet's edge, one highlighted under his fingertip. The rest of the mirror shows his ordinary reflection. Warm evening light, realistic textures, sharp focus on the tablet, product concept photography.
+Negative: extra fingers, distorted hands, duplicated person, garbled text, floating devices, cartoon, watermark.</pre>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-head"><h3>2 · Kit flat-lay packshot <span class="muted mono small">1:1</span></h3><button class="copy" type="button" data-copy="p2">Copy prompt</button></div>
+    <pre class="prompt" id="p2">Top-down flat-lay product photo of a smart mirror add-on kit on a light oak table: a thin round magnetic mirror plate with its peel-off adhesive liner half pulled back, a slim 11-inch tablet lying face up showing a wardrobe app with clothing thumbnails, a braided safety strap, a compact USB-C power adapter, a coiled white USB-C cable, an alcohol wipe sachet, and a small printed card that reads "Stick it on any mirror". Soft studio light, minimal styling, high detail, no brand logos.
+Negative: clutter, extra devices, garbled text, cartoon, watermark.</pre>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-head"><h3>3 · Before and after <span class="muted mono small">16:9</span></h3><button class="copy" type="button" data-copy="p3">Copy prompt</button></div>
+    <pre class="prompt" id="p3">Split-screen product concept image of the same bedroom wall mirror. Left half, labelled "Before": an ordinary mirror reflecting a young Indian woman in a grey t-shirt. Right half, labelled "After": the same mirror with a slim tablet docked on it at chest height, showing her live video wearing a mustard-yellow kurta with white straight pants, while her normal reflection stays visible around the tablet. Same camera angle and lighting in both halves, photorealistic, clean, high detail.
+Negative: mismatched rooms, garbled text, distorted faces, watermark.</pre>
+  </div>
+  <p class="small muted" style="margin:0">Festive variant: swap the outfit for "a maroon silk saree with a gold border" or "an ivory sherwani".</p>
+</section>
+
+<section class="sec" id="sticker">
+  <div class="sec-head">
+    <p class="eyebrow">Can a sticker do it?</p>
+    <h2>A sticker can add touch, but not the picture</h2>
+  </div>
+  <div class="prose">
+    <p>Three jobs have to happen on the mirror: sense your finger, see you, and show you in the new outfit. Thin films and frames handle the first job. A small camera handles the second. The third is where every sticker-like overlay fails, for two reasons that come from optics, not from today's technology.</p>
+  </div>
+  <figure class="fig">
+    <div class="trio">
+      <div class="panel">
+        <p class="panel-title bad">A · See-through display film</p>
+        <div class="canvas">
+          <svg class="dg" viewBox="0 0 220 300" role="img" aria-label="A mirror with a see-through LED film on it. The film's coarse glowing pixels form a rough kurta shape that sits off to one side of the person's reflection, and the grey t-shirt still shows through.">
+            <rect class="glass" x="40" y="16" width="140" height="268" rx="2"/>
+            <circle class="head" cx="110" cy="58" r="13"/>
+            <path class="body" d="M94 76 H126 L133 88 L132 168 H88 L87 88 Z"/>
+            <rect class="body" x="96" y="166" width="11" height="96" rx="3"/>
+            <rect class="body" x="113" y="166" width="11" height="96" rx="3"/>
+            <g class="chalk" opacity=".85">
+              <circle cx="104" cy="84" r="2.6"/><circle cx="113" cy="84" r="2.6"/><circle cx="122" cy="84" r="2.6"/><circle cx="131" cy="84" r="2.6"/>
+              <circle cx="104" cy="93" r="2.6"/><circle cx="113" cy="93" r="2.6"/><circle cx="122" cy="93" r="2.6"/><circle cx="131" cy="93" r="2.6"/><circle cx="140" cy="93" r="2.6"/>
+              <circle cx="104" cy="102" r="2.6"/><circle cx="113" cy="102" r="2.6"/><circle cx="122" cy="102" r="2.6"/><circle cx="131" cy="102" r="2.6"/><circle cx="140" cy="102" r="2.6"/>
+              <circle cx="104" cy="111" r="2.6"/><circle cx="113" cy="111" r="2.6"/><circle cx="122" cy="111" r="2.6"/><circle cx="131" cy="111" r="2.6"/><circle cx="140" cy="111" r="2.6"/>
+              <circle cx="104" cy="120" r="2.6"/><circle cx="113" cy="120" r="2.6"/><circle cx="122" cy="120" r="2.6"/><circle cx="131" cy="120" r="2.6"/><circle cx="140" cy="120" r="2.6"/>
+              <circle cx="104" cy="129" r="2.6"/><circle cx="113" cy="129" r="2.6"/><circle cx="122" cy="129" r="2.6"/><circle cx="131" cy="129" r="2.6"/><circle cx="140" cy="129" r="2.6"/>
+              <circle cx="104" cy="138" r="2.6"/><circle cx="113" cy="138" r="2.6"/><circle cx="122" cy="138" r="2.6"/><circle cx="131" cy="138" r="2.6"/><circle cx="140" cy="138" r="2.6"/>
+              <circle cx="104" cy="147" r="2.6"/><circle cx="113" cy="147" r="2.6"/><circle cx="122" cy="147" r="2.6"/><circle cx="131" cy="147" r="2.6"/><circle cx="140" cy="147" r="2.6"/>
+              <circle cx="104" cy="156" r="2.6"/><circle cx="113" cy="156" r="2.6"/><circle cx="122" cy="156" r="2.6"/><circle cx="131" cy="156" r="2.6"/><circle cx="140" cy="156" r="2.6"/>
+              <circle cx="104" cy="165" r="2.6"/><circle cx="113" cy="165" r="2.6"/><circle cx="122" cy="165" r="2.6"/><circle cx="131" cy="165" r="2.6"/><circle cx="140" cy="165" r="2.6"/>
+              <circle cx="104" cy="174" r="2.6"/><circle cx="113" cy="174" r="2.6"/><circle cx="122" cy="174" r="2.6"/><circle cx="131" cy="174" r="2.6"/><circle cx="140" cy="174" r="2.6"/>
+            </g>
+            <line class="ln-mu" x1="146" y1="98" x2="190" y2="56"/>
+            <text class="sm" x="210" y="36" text-anchor="end">coarse pixels,</text>
+            <text class="sm" x="210" y="49" text-anchor="end">off target</text>
+          </svg>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="panel-title part">B · Touch film only</p>
+        <div class="canvas">
+          <svg class="dg" viewBox="0 0 220 300" role="img" aria-label="A mirror with an invisible touch film on it. The reflection looks normal; a dotted area marks where touches register, and the try-on picture appears on a phone instead of the mirror.">
+            <rect class="glass" x="40" y="16" width="140" height="268" rx="2"/>
+            <circle class="head" cx="110" cy="58" r="13"/>
+            <path class="body" d="M94 76 H126 L133 88 L132 168 H88 L87 88 Z"/>
+            <rect class="body" x="96" y="166" width="11" height="96" rx="3"/>
+            <rect class="body" x="113" y="166" width="11" height="96" rx="3"/>
+            <rect class="ln-ac dot" x="50" y="190" width="96" height="84" rx="3"/>
+            <circle class="ink" cx="134" cy="226" r="4"/>
+            <text class="sm ac" x="56" y="268">touch area</text>
+            <rect class="head" x="178" y="196" width="34" height="62" rx="5"/>
+            <rect class="lcd" x="182" y="204" width="26" height="46" rx="1"/>
+            <circle class="lit" cx="195" cy="214" r="4"/>
+            <path class="chalk" d="M190 220 H200 L202 224 L201 240 H189 L188 224 Z"/>
+            <text class="sm" x="195" y="274" text-anchor="middle">picture</text>
+            <text class="sm" x="195" y="286" text-anchor="middle">on phone</text>
+          </svg>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="panel-title good">C · Slim screen + camera</p>
+        <div class="canvas">
+          <svg class="dg" viewBox="0 0 220 300" role="img" aria-label="A mirror with a slim screen mounted over part of it and a small camera at its top. The screen shows a live, flipped video of the person wearing the selected kurta; the rest of the glass still reflects normally, and one thin cable runs down the side.">
+            <rect class="glass" x="40" y="16" width="140" height="268" rx="2"/>
+            <circle class="head" cx="110" cy="58" r="13"/>
+            <path class="body" d="M94 76 H126 L133 88 L132 168 H88 L87 88 Z"/>
+            <rect class="body" x="96" y="166" width="11" height="96" rx="3"/>
+            <rect class="body" x="113" y="166" width="11" height="96" rx="3"/>
+            <rect class="lcd" x="66" y="84" width="88" height="150" rx="3"/>
+            <circle class="lit" cx="110" cy="104" r="7"/>
+            <path class="chalk" d="M101 114 H119 L123 121 L122 168 H98 L97 121 Z"/>
+            <rect class="lit" x="102" y="168" width="6" height="50" rx="2"/>
+            <rect class="lit" x="112" y="168" width="6" height="50" rx="2"/>
+            <rect x="138" y="96" width="10" height="8" rx="1" style="fill:#2b3a67"/>
+            <rect class="chalk" x="138" y="108" width="10" height="8" rx="1"/>
+            <rect x="138" y="120" width="10" height="8" rx="1" style="fill:#7a2632"/>
+            <circle class="head" cx="110" cy="76" r="4"/>
+            <circle class="ink" cx="110" cy="76" r="1.6"/>
+            <path class="ln-mu" d="M154 220 H170 V284"/>
+            <text class="sm" x="174" y="258">1 cable</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <figcaption><b>What you'd actually see with each kind of overlay.</b> A see-through display film can only add coarse glowing pixels on the glass. They can't line up with a reflection that sits behind the glass, and your real shirt still shows through. A touch film makes the glass respond to taps but shows nothing, so the picture ends up on your phone. A slim screen over part of the mirror shows a live, flipped video of you in the outfit while the rest of the glass stays a mirror.</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Overlay</th><th>Adds touch?</th><th>Shows you in the outfit?</th><th>Cost and catch</th></tr></thead>
+      <tbody>
+        <tr><td><b>Infrared touch frame</b><span class="sub">around the mirror's edge</span></td><td><span class="pill on">Yes, best</span></td><td>No</td><td>US$60–300 for 43″; must match the mirror's size; adds a raised bezel on all four sides</td></tr>
+        <tr><td><b>Laser (LiDAR) corner sensor</b></td><td><span class="pill on">Yes, coarser</span></td><td>No</td><td>Hokuyo US$1,150–1,775; Chinese kits cheaper; needs calibration and careful mounting</td></tr>
+        <tr><td><b>Capacitive touch film</b><span class="sub">on the front of the glass</span></td><td><span class="pill warn">Maybe: test first</span></td><td>No</td><td>US$124–600 for 55″, 0.2 mm thin; the only true sticker. Vendors cover film behind glass, which fails through a mirror's silver; the front is untested</td></tr>
+        <tr><td><b>See-through LED film</b></td><td>No</td><td><span class="pill warn">Coarse glow only</span></td><td>At 3.9 mm pitch, about 128 × 256 dots over 0.5 × 1 m; ₹67,000–1.35 lakh per 0.5 m² (IndiaMART list); dims your reflection; draws 20–60 A at 5 V</td></tr>
+        <tr><td><b>See-through OLED</b></td><td>No</td><td><span class="pill off">Not sold as film</span></td><td>Only rigid signage panels, US$4,000–21,500</td></tr>
+        <tr><td><b>Projector + projection film</b></td><td>No</td><td><span class="pill off">No</span></td><td>The beam bounces off the mirror: hotspots, ghost images, washout</td></tr>
+        <tr><td><b>Transparent LCD, e-paper, smart film</b></td><td>No</td><td><span class="pill off">No</span></td><td>Needs a backlight the silver blocks, refreshes in seconds, or can only dim or frost</td></tr>
+        <tr class="pick"><td><b>Slim screen over part of the mirror</b><span class="sub">tablet or portable monitor + camera</span></td><td><span class="pill on">Yes, its own</span></td><td><span class="pill on">Yes, as live video</span></td><td>₹11,500–14,000 for an 11″ tablet; ₹6,090–13,990 for a 15.6″ touch monitor</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Why even a perfect see-through film can't dress your reflection</h3>
+  <figure class="fig">
+    <div class="pair">
+      <div class="panel">
+        <p class="panel-title bad">A · Draw the dress on the reflection</p>
+        <div class="canvas">
+          <svg class="dg" viewBox="0 0 440 306" role="img" aria-label="Top view. You stand 1 metre from the glass and your reflection appears 1 metre behind it. Sight lines from your two eyes to the reflection cross the glass at two different points, so a dress drawn on the glass cannot line up for both eyes, and your eyes focus 2 metres away, not on the glass.">
+            <ellipse class="body" cx="86" cy="140" rx="16" ry="50"/>
+            <circle class="head" cx="92" cy="140" r="22"/>
+            <polygon class="ink" points="113,134 122,140 113,146"/>
+            <circle class="ink" cx="106" cy="128" r="3"/>
+            <circle class="ink" cx="106" cy="152" r="3"/>
+            <text x="86" y="214" text-anchor="middle">you</text>
+            <rect class="glass" x="222" y="40" width="8" height="200"/>
+            <text class="mu" x="226" y="256" text-anchor="middle">glass</text>
+            <g opacity=".6">
+              <ellipse class="ln dash" cx="366" cy="140" rx="16" ry="50"/>
+              <circle class="ln dash" cx="360" cy="140" r="22"/>
+              <polygon class="ln" points="339,134 330,140 339,146"/>
+            </g>
+            <circle class="chalk" cx="356" cy="104" r="5"/>
+            <text x="366" y="214" text-anchor="middle">your reflection</text>
+            <line class="ln" x1="106" y1="128" x2="222" y2="116.9"/>
+            <line class="ln dash" x1="230" y1="116.1" x2="351" y2="104.5"/>
+            <line class="ln" x1="106" y1="152" x2="222" y2="129.7"/>
+            <line class="ln dash" x1="230" y1="128.2" x2="351" y2="105"/>
+            <line class="tick-ch" x1="216" y1="116.9" x2="236" y2="116.9"/>
+            <line class="tick-ch" x1="216" y1="129.7" x2="236" y2="129.7"/>
+            <line class="ln-mu" x1="238" y1="114" x2="252" y2="52"/>
+            <text x="256" y="32">each eye needs the dress</text>
+            <text x="256" y="47">at a different spot</text>
+            <g class="ln-mu">
+              <line x1="106" y1="272" x2="222" y2="272"/>
+              <line x1="106" y1="266" x2="106" y2="278"/>
+              <line x1="222" y1="266" x2="222" y2="278"/>
+              <line x1="230" y1="272" x2="356" y2="272"/>
+              <line x1="230" y1="266" x2="230" y2="278"/>
+              <line x1="356" y1="266" x2="356" y2="278"/>
+              <line x1="106" y1="296" x2="356" y2="296"/>
+              <line x1="106" y1="290" x2="106" y2="302"/>
+              <line x1="356" y1="290" x2="356" y2="302"/>
+            </g>
+            <text x="164" y="266" text-anchor="middle">1 m</text>
+            <text x="293" y="266" text-anchor="middle">1 m</text>
+            <text x="231" y="290" text-anchor="middle">eyes focus 2 m away</text>
+          </svg>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="panel-title good">B · Show a flipped video instead</p>
+        <div class="canvas">
+          <svg class="dg" viewBox="0 0 440 306" role="img" aria-label="Top view of the working design. A camera films you, an AI box draws the outfit, and a screen on the glass shows a flipped video of you in the outfit. Both eyes look at the same picture on one plane, so it lines up.">
+            <defs>
+              <marker id="ah-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink"/></marker>
+              <marker id="ah-b-ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ac"/></marker>
+            </defs>
+            <ellipse class="body" cx="86" cy="140" rx="16" ry="50"/>
+            <circle class="head" cx="92" cy="140" r="22"/>
+            <polygon class="ink" points="113,134 122,140 113,146"/>
+            <circle class="ink" cx="106" cy="128" r="3"/>
+            <circle class="ink" cx="106" cy="152" r="3"/>
+            <text x="86" y="214" text-anchor="middle">you</text>
+            <rect class="glass" x="222" y="40" width="8" height="200"/>
+            <rect class="screen" x="232" y="64" width="10" height="152"/>
+            <text class="mu" x="232" y="256" text-anchor="middle">glass + screen</text>
+            <circle class="head" cx="237" cy="52" r="5"/>
+            <circle class="ink" cx="237" cy="52" r="2"/>
+            <text x="212" y="56" text-anchor="end">camera</text>
+            <rect class="box" x="310" y="104" width="122" height="72" rx="4"/>
+            <text class="tl" x="371" y="128" text-anchor="middle">AI box</text>
+            <text x="371" y="146" text-anchor="middle">finds your body,</text>
+            <text x="371" y="162" text-anchor="middle">draws the outfit</text>
+            <path class="ln" d="M243 52 C 300 52, 340 66, 340 101" marker-end="url(#ah-b)"/>
+            <text x="350" y="78">live video</text>
+            <line class="ln" x1="310" y1="164" x2="245" y2="164" marker-end="url(#ah-b)"/>
+            <text x="278" y="142" text-anchor="middle">dressed,</text>
+            <text x="278" y="156" text-anchor="middle">flipped</text>
+            <line class="ln-ac" x1="221" y1="140" x2="112" y2="128.6" marker-end="url(#ah-b-ac)"/>
+            <line class="ln-ac" x1="221" y1="140" x2="112" y2="151.4" marker-end="url(#ah-b-ac)"/>
+            <text x="160" y="94" text-anchor="middle">both eyes see one</text>
+            <text class="ac" x="160" y="109" text-anchor="middle">picture, in focus</text>
+            <text class="mu" x="366" y="200" text-anchor="middle">the screen covers</text>
+            <text class="mu" x="366" y="215" text-anchor="middle">the reflection there</text>
+            <g class="ln-mu">
+              <line x1="106" y1="272" x2="222" y2="272"/>
+              <line x1="106" y1="266" x2="106" y2="278"/>
+              <line x1="222" y1="266" x2="222" y2="278"/>
+            </g>
+            <text x="164" y="266" text-anchor="middle">1 m</text>
+            <text x="164" y="292" text-anchor="middle">eyes focus on the glass</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <figcaption><b>Top view, looking down.</b> In A, each eye's line of sight to the reflection crosses the glass at a different point (yellow ticks), about 3 cm apart, so no single drawing lines up for both eyes, and the eyes focus 2 m away while the drawing is 1 m away. A see-through display also only adds light, so it can't hide the shirt you're wearing. In B, the camera films you, the AI dresses the video, and an opaque screen shows it flipped like a mirror. Everything sits on one plane, so it lines up for both eyes.</figcaption>
+  </figure>
+</section>
+
+<section class="sec" id="exists">
+  <div class="sec-head">
+    <p class="eyebrow">Does it already exist?</p>
+    <h2>Nobody sells a try-on sticker</h2>
+  </div>
+  <div class="prose">
+    <p>Nothing found as of October 2026 adds a screen and a camera to a mirror you already own for outfit try-on, and no crowdfunding for one turned up from 2024–26. The parts exist separately, mostly for fitness and shop windows. Full try-on mirrors exist only in stores, and the products that know your own clothes show a still image, an avatar or a list.</p>
+  </div>
+  <h3>Closest add-ons for an existing mirror</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>What it is</th><th>Try-on?</th><th>Price / status</th></tr></thead>
+      <tbody>
+        <tr><td><b>MirrorPlay</b><span class="sub">Kickstarter</span></td><td>MagSafe phone holder that sticks to mirrors, for home workouts and yoga</td><td>No</td><td>€14,657 from 398 backers (probably late 2024)</td></tr>
+        <tr><td><b>Mirror phone mounts</b></td><td>Suction or MagSafe mounts that hold a phone on a mirror</td><td>No</td><td>US$12–24 in the US; about ₹899 list in India</td></tr>
+        <tr><td><b>Touch-switch LED mirrors</b></td><td>Bathroom mirrors with a touch button that works through the glass</td><td>No</td><td>About ₹2,500 in India; proof that people accept touch on a mirror</td></tr>
+        <tr><td><b>espresso display</b></td><td>5.3 mm, 864 g portable touchscreen with magnetic mounts</td><td>No</td><td>Shows how thin and light a stick-on screen can be</td></tr>
+        <tr><td><b>Displace TV</b></td><td>Wireless, battery-powered TV that holds to walls and glass by suction</td><td>No</td><td>Shown at CES 2025; status of its 2026 hub unclear</td></tr>
+        <tr><td><b>21.5″ "magic mirror" panels</b><span class="sub">Chinese factories</span></td><td>Android touch panels sold to shops and gyms</td><td>Some fitting apps</td><td>US$85–399 ex-factory</td></tr>
+        <tr><td><b>Peloton Guide</b></td><td>Add-on camera that turned an existing TV into a strength trainer</td><td>No</td><td><span class="pill off">Stopped Jul 2025</span></td></tr>
+        <tr><td><b>LED film and touch foil</b></td><td>Stick-on films that make shop windows glow or respond to touch</td><td>No</td><td>Sold to businesses; see the overlay table above</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="fig mid">
+    <div class="canvas scroll">
+      <svg class="dg" viewBox="0 0 760 460" role="img" aria-label="Positioning map. Horizontal axis: used in a store versus at home or on a phone. Vertical axis: store catalogue versus your own clothes. Live, movement-following systems (FXMirror, LOOOK.AI) all sit in the store-catalogue corner. Products that know your own clothes (HEYMIRROR, Alta, Whering, Acloset, the discontinued Echo Look) show still images or lists. The corner for live try-on of your own clothes at home holds only the sticker kit idea.">
+        <g>
+          <circle class="ink" cx="86" cy="18" r="5"/>
+          <text x="98" y="22">live, follows you</text>
+          <circle class="head" cx="240" cy="18" r="5"/>
+          <text x="252" y="22">still photo, avatar or AI image</text>
+          <rect class="head" x="486" y="13" width="10" height="10"/>
+          <text x="504" y="22">outfit lists only</text>
+          <g class="ln-mu"><line x1="636" y1="13" x2="646" y2="23"/><line x1="646" y1="13" x2="636" y2="23"/></g>
+          <text x="654" y="22">stopped</text>
+        </g>
+        <line class="ln-mu" x1="60" y1="420" x2="60" y2="50"/>
+        <line class="ln-mu" x1="60" y1="420" x2="742" y2="420"/>
+        <line class="ln-mu" x1="400" y1="54" x2="400" y2="420" stroke-dasharray="2 4"/>
+        <line class="ln-mu" x1="60" y1="238" x2="742" y2="238" stroke-dasharray="2 4"/>
+        <text class="cap mu" x="70" y="62">YOUR OWN CLOTHES</text>
+        <text class="cap mu" x="70" y="410">STORE CATALOGUE</text>
+        <text class="cap mu" x="70" y="444">IN A STORE</text>
+        <text class="cap mu" x="740" y="444" text-anchor="end">AT HOME OR ON YOUR PHONE</text>
+        <text class="mu" x="230" y="146" text-anchor="middle">empty: stores show</text>
+        <text class="mu" x="230" y="161" text-anchor="middle">their own stock</text>
+        <rect x="560" y="64" width="176" height="44" rx="6" style="fill:var(--accent-soft)"/>
+        <polygon class="ac" points="580,74 583.5,81.5 591.5,82 585.5,87.5 587.3,95.5 580,91.4 572.7,95.5 574.5,87.5 568.5,82 576.5,81.5"/>
+        <text class="tl" x="600" y="83">Your sticker kit</text>
+        <text class="mu" x="600" y="99">live + own clothes</text>
+        <circle class="head" cx="600" cy="146" r="6"/>
+        <text x="588" y="150" text-anchor="end">HEYMIRROR (CES 2026)</text>
+        <circle class="head" cx="470" cy="172" r="6"/>
+        <text x="482" y="176">Alta (avatar)</text>
+        <g class="ln-mu"><line x1="644" y1="184" x2="656" y2="196"/><line x1="656" y1="184" x2="644" y2="196"/></g>
+        <text class="mu" x="636" y="194" text-anchor="end">Echo Look, 2017–20</text>
+        <rect class="head" x="435" y="209" width="10" height="10"/>
+        <text x="452" y="218">Whering, Acloset</text>
+        <circle class="head" cx="480" cy="280" r="6"/>
+        <text x="492" y="284">Google try-on (India, Dec 2025)</text>
+        <circle class="head" cx="600" cy="318" r="6"/>
+        <text x="612" y="322">Glance AI</text>
+        <circle class="head" cx="470" cy="354" r="6"/>
+        <text x="482" y="358">Myntra (pilot, 2026)</text>
+        <g class="ln-mu"><line x1="634" y1="382" x2="646" y2="394"/><line x1="646" y1="382" x2="634" y2="394"/></g>
+        <text class="mu" x="626" y="392" text-anchor="end">Doppl, closed 2026</text>
+        <circle class="ink" cx="140" cy="282" r="6"/>
+        <text x="152" y="286">FXMirror</text>
+        <circle class="ink" cx="250" cy="318" r="6"/>
+        <text x="262" y="322">LOOOK.AI (2026)</text>
+        <g class="ln-mu"><line x1="194" y1="256" x2="206" y2="268"/><line x1="206" y1="256" x2="194" y2="268"/></g>
+        <text class="mu" x="214" y="266">Oak Labs, sold 2018</text>
+        <circle class="head" cx="120" cy="352" r="6"/>
+        <text x="132" y="356">MemoMi (Walmart)</text>
+        <g class="ln-mu"><line x1="294" y1="374" x2="306" y2="386"/><line x1="306" y1="374" x2="294" y2="386"/></g>
+        <text class="mu" x="286" y="384" text-anchor="end">Snap AR Mirror, 2023</text>
+      </svg>
+    </div>
+    <figcaption><b>Where try-on products sit.</b> Every system that follows you live works from a store's catalogue, inside a store. Every product that knows your own clothes shows a still image, an avatar or a list. The corner your kit targets is empty. Positions are qualitative; details are in the tables below.</figcaption>
+  </figure>
+
+  <h3>Try-on mirrors and devices</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>Where</th><th>Whose clothes</th><th>How it shows you</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>HEYMIRROR</b><span class="sub">EONEOMS, Seoul</span></td><td>Home</td><td>Your own (stored wardrobe)</td><td>Suggests outfits by voice or touch from weather, calendar and occasion; previews them as AI-generated images. No live try-on found; unclear whether it has a camera.</td><td><span class="pill on">CES 2026 honoree</span><span class="sub">Trade listing US$500 ex-works, 300-unit minimum</span></td></tr>
+        <tr><td><b>Echo Look</b><span class="sub">Amazon</span></td><td>Home</td><td>Your own</td><td>Hands-free camera photographed what you wore; "Style Check" rated two outfits. No try-on.</td><td><span class="pill off">Stopped 2020</span><span class="sub">US$199.99 (2017); features moved to the Amazon Shopping app</span></td></tr>
+        <tr><td><b>MIRROR</b><span class="sub">Lululemon</span></td><td>Home</td><td>None (fitness)</td><td>Screen behind a two-way mirror. Proof of the form factor, and of its price problem.</td><td><span class="pill off">Stopped 2023</span><span class="sub">US$1,495, later US$995, plus US$39/month</span></td></tr>
+        <tr><td><b>LOOOK.AI</b><span class="sub">FFFACE.ME</span></td><td>Store</td><td>Store stock (product photos)</td><td>Live try-on that follows your movement, generated by Decart's Lucy 2.0 video model from flat product photos, with no 3D modelling.</td><td><span class="pill on">Launched Mar 2026</span><span class="sub">About US$0.05 per second of use (≈US$180/hour), per one analysis</span></td></tr>
+        <tr><td><b>FXMirror</b><span class="sub">FXGear, Korea</span></td><td>Store</td><td>Store stock (3D garments)</td><td>Depth camera plus 3D garment simulation; the 2018 "True Fit" avatar copies your movements live.</td><td><span class="pill">Status after 2019 unclear</span></td></tr>
+        <tr><td><b>Memory Mirror</b><span class="sub">MemoMi</span></td><td>Store</td><td>Store stock</td><td>Records you, compares looks side by side, recolours a garment.</td><td><span class="pill">Bought by Walmart, 2022</span><span class="sub">Scaled for eyewear in 2,800+ Walmart Vision Centers</span></td></tr>
+        <tr><td><b>AR Mirror</b><span class="sub">Snap</span></td><td>Store</td><td>Store stock</td><td>AR clothing over live video.</td><td><span class="pill off">Shut autumn 2023</span><span class="sub">About six months after launch</span></td></tr>
+        <tr><td><b>Indian pilots</b><span class="sub">Dharpan.ai, TCS, Qualcomm</span></td><td>Store / demo</td><td>Store stock</td><td>Six-foot store mirrors (Dharpan.ai, Hyderabad), a TCS demo (Feb 2026), a Qualcomm on-device demo at India Mobile Congress (Oct 2026). Proven Indian uses are jewellery (Tanishq) and eyewear (Lenskart).</td><td><span class="pill">Pilots and demos</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Phone apps that already do part of the job</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>App</th><th>What it does</th><th>Shows it on you?</th><th>Price / scale</th></tr></thead>
+      <tbody>
+        <tr><td><b>Google "try it on"</b><span class="sub">in Search</span></td><td>Shows shop items on a photo of you</td><td>Yes, still image</td><td>Free; in India since 3 Dec 2025. Google's separate Doppl app closed on 30 Apr 2026.</td></tr>
+        <tr><td><b>Glance AI</b><span class="sub">InMobi</span></td><td>AI images of you in outfits from one selfie; runs on phone lock screens and, in the US, Samsung TVs</td><td>Yes, AI image</td><td>Free; 1.5M+ users within weeks of its US launch (company claim)</td></tr>
+        <tr><td><b>Alta</b></td><td>Digitises your own closet and dresses a photo-real avatar of you</td><td>Yes, avatar</td><td>Free, earns from shopping; US$11M seed (2025)</td></tr>
+        <tr><td><b>Whering</b></td><td>Digital wardrobe and outfit planner; try-on announced</td><td>Not yet</td><td>10M users; US$7M seed (Jul 2026)</td></tr>
+        <tr><td><b>Acloset</b></td><td>Digital closet with AI outfit suggestions</td><td>No</td><td>8–9M users (claim); free or US$3.99–9.99/month</td></tr>
+        <tr><td><b>Myntra</b></td><td>Try-on from customer photos</td><td>Yes, still image</td><td>Pilot since Jul 2026</td></tr>
+        <tr><td><b>Wardrobe.AI</b></td><td>Matches a Pinterest or social screenshot to items you own</td><td>No</td><td>Closest to "rebuild the influencer look from my closet"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What the earlier attempts teach</h3>
+  <ul class="prose" style="padding-left:1.2em">
+    <li><b>Price sinks home hardware.</b> MIRROR sold at US$1,495 plus a subscription and was written off within three years. A ₹499 dock and a ₹12,000–17,700 tablet kit avoid that trap; a full mirror walks into it.</li>
+    <li><b>The phone usually wins.</b> Amazon moved Echo Look's features into its shopping app, and Google, Glance and Zara now give photo try-on away free. A mirror kit must do what a phone in your hand can't: hands-free, full-body and live, at the moment you dress.</li>
+    <li><b>Add-on cameras get dropped.</b> Peloton Guide, a camera that turned an existing TV into a trainer, was discontinued in 2025. Reuse the camera people already own where you can.</li>
+    <li><b>A device that depends on the cloud dies with its company.</b> Naked Labs mirrors stopped working when the service ended. Keep the core features working offline.</li>
+  </ul>
+</section>
+
+<section class="sec" id="software">
+  <div class="sec-head">
+    <p class="eyebrow">How it works</p>
+    <h2>Three loops: wardrobe, live mirror, photo-real look</h2>
+  </div>
+  <figure class="fig">
+    <div class="canvas scroll">
+      <svg class="dg" viewBox="0 0 980 430" role="img" aria-label="Software pipeline in three lanes. Wardrobe, once per garment: add a garment, cut it out, auto-tag it, store it, and a stylist suggests outfits. Live mirror, every frame: camera, body tracking, garment fit, mirror view, screen on the mirror. Photo-real look, on tap: best frame, AI try-on model, HD look, compare and save. The wardrobe feeds garment images to the live fit, which passes the same garment to the photo-real model.">
+        <defs>
+          <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink"/></marker>
+        </defs>
+        <text class="cap ac" x="20" y="30">WARDROBE · ONCE PER GARMENT</text>
+        <text class="cap ac" x="20" y="176">LIVE MIRROR · ON THE DEVICE, EVERY FRAME</text>
+        <text class="cap ac" x="20" y="322">PHOTO-REAL LOOK · ON TAP</text>
+        <g>
+          <rect class="box" x="20" y="42" width="140" height="76" rx="4"/>
+          <text class="tt" x="32" y="66">Add a garment</text>
+          <text x="32" y="86">hold it up to the</text>
+          <text x="32" y="102">camera, or snap it</text>
+          <rect class="box" x="216" y="42" width="140" height="76" rx="4"/>
+          <text class="tt" x="228" y="66">Cut-out</text>
+          <text x="228" y="86">background</text>
+          <text x="228" y="102">removed</text>
+          <rect class="box" x="412" y="42" width="140" height="76" rx="4"/>
+          <text class="tt" x="424" y="66">Auto-tag</text>
+          <text x="424" y="86">type, colour,</text>
+          <text x="424" y="102">pattern, formality</text>
+          <rect class="box" x="608" y="42" width="140" height="76" rx="4"/>
+          <text class="tt" x="620" y="66">Wardrobe</text>
+          <text x="620" y="86">your clothes,</text>
+          <text x="620" y="102">kept on device</text>
+          <rect class="box" x="804" y="42" width="140" height="76" rx="4"/>
+          <text class="tt" x="816" y="66">Stylist</text>
+          <text x="816" y="86">colour, dress code,</text>
+          <text x="816" y="102">weather, occasion</text>
+        </g>
+        <g class="ln">
+          <line x1="162" y1="80" x2="213" y2="80" marker-end="url(#ah-p)"/>
+          <line x1="358" y1="80" x2="409" y2="80" marker-end="url(#ah-p)"/>
+          <line x1="554" y1="80" x2="605" y2="80" marker-end="url(#ah-p)"/>
+          <line x1="750" y1="80" x2="801" y2="80" marker-end="url(#ah-p)"/>
+        </g>
+        <g class="mu" text-anchor="middle">
+          <text x="188" y="72">photo</text>
+          <text x="384" y="72">cut-out</text>
+          <text x="580" y="72">tags</text>
+          <text x="776" y="72">items</text>
+        </g>
+        <g>
+          <rect class="box" x="20" y="188" width="140" height="76" rx="4"/>
+          <text class="tt" x="32" y="212">Camera</text>
+          <text x="32" y="232">tablet or webcam,</text>
+          <text x="32" y="248">30–60 fps</text>
+          <rect class="box" x="216" y="188" width="140" height="76" rx="4"/>
+          <text class="tt" x="228" y="212">Body tracking</text>
+          <text x="228" y="232">pose points +</text>
+          <text x="228" y="248">body mask</text>
+          <rect class="box" x="412" y="188" width="140" height="76" rx="4"/>
+          <text class="tt" x="424" y="212">Garment fit</text>
+          <text x="424" y="232">warps the garment</text>
+          <text x="424" y="248">onto your pose</text>
+          <rect class="box" x="608" y="188" width="140" height="76" rx="4"/>
+          <text class="tt" x="620" y="212">Mirror view</text>
+          <text x="620" y="232">flip left↔right,</text>
+          <text x="620" y="248">fit to the screen</text>
+          <rect class="box" x="804" y="188" width="140" height="76" rx="4" style="stroke:var(--accent)"/>
+          <text class="tt" x="816" y="212">Screen</text>
+          <text x="816" y="232">on the mirror</text>
+          <text x="816" y="248">under 100 ms</text>
+        </g>
+        <g class="ln">
+          <line x1="162" y1="226" x2="213" y2="226" marker-end="url(#ah-p)"/>
+          <line x1="358" y1="226" x2="409" y2="226" marker-end="url(#ah-p)"/>
+          <line x1="554" y1="226" x2="605" y2="226" marker-end="url(#ah-p)"/>
+          <line x1="750" y1="226" x2="801" y2="226" marker-end="url(#ah-p)"/>
+        </g>
+        <g class="mu" text-anchor="middle">
+          <text x="188" y="218">frame</text>
+          <text x="384" y="218">pose</text>
+          <text x="580" y="218">frame</text>
+          <text x="776" y="218">video</text>
+        </g>
+        <g>
+          <rect class="box" x="216" y="334" width="140" height="76" rx="4"/>
+          <text class="tt" x="228" y="358">Best frame</text>
+          <text x="228" y="378">sharp, facing</text>
+          <text x="228" y="394">the mirror</text>
+          <rect class="box" x="412" y="334" width="140" height="76" rx="4"/>
+          <text class="tt" x="424" y="358">AI try-on model</text>
+          <text x="424" y="378">cloud API or</text>
+          <text x="424" y="394">local GPU</text>
+          <rect class="box" x="608" y="334" width="140" height="76" rx="4"/>
+          <text class="tt" x="620" y="358">HD look</text>
+          <text x="620" y="378">photo-real image</text>
+          <text x="620" y="394">in ~5–20 s</text>
+          <rect class="box" x="804" y="334" width="140" height="76" rx="4"/>
+          <text class="tt" x="816" y="358">Compare + save</text>
+          <text x="816" y="378">side by side,</text>
+          <text x="816" y="394">send to phone</text>
+        </g>
+        <g class="ln">
+          <line x1="358" y1="372" x2="409" y2="372" marker-end="url(#ah-p)"/>
+          <line x1="554" y1="372" x2="605" y2="372" marker-end="url(#ah-p)"/>
+          <line x1="750" y1="372" x2="801" y2="372" marker-end="url(#ah-p)"/>
+        </g>
+        <g class="mu" text-anchor="middle">
+          <text x="384" y="364">frame</text>
+          <text x="580" y="364">image</text>
+          <text x="776" y="364">image</text>
+        </g>
+        <g class="ln">
+          <path d="M678 118 V146 H482 V185" marker-end="url(#ah-p)"/>
+          <path d="M874 118 V185" marker-end="url(#ah-p)"/>
+          <path d="M286 264 V331" marker-end="url(#ah-p)"/>
+          <path d="M482 264 V331" marker-end="url(#ah-p)"/>
+        </g>
+        <text x="580" y="140" text-anchor="middle">garment image</text>
+        <text x="882" y="150">outfit ideas</text>
+        <text x="882" y="164">for the menu</text>
+        <text x="294" y="302">tap “HD look”</text>
+        <text x="490" y="302">same garment</text>
+      </svg>
+    </div>
+    <figcaption><b>Two speeds.</b> The live view must keep up with your movement, so it runs a fast, approximate fit on the tablet every frame. When you want to judge the real look, one tap sends a still frame and the garment to a slower generative model that returns a photo-real image. The wardrobe loop runs once per garment and feeds both. All of it is software, so the same app works on a phone before any hardware exists.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>Body tracking is solved: current models run at 30 fps and faster on phones and small boards. The hard part is the garment. Live methods are fast but approximate: they warp a flat garment photo onto your body, or they need a 3D model of every garment, which no one will make for a personal wardrobe. Photo-real generative try-on works from one garment photo but takes seconds per image.</p>
+    <p><b>A quick win to test first:</b> recolour the garment you are already wearing, live (clothes mask plus a colour shift), as Uniqlo's 2012 store mirror did. It looks real because the folds and fit are real, and it answers "would this shirt work in navy?" The research flags it as untested.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Job</th><th>What to use</th><th>Speed (measured on)</th><th>Licence for a product</th></tr></thead>
+      <tbody>
+        <tr><td><b>Body pose</b><span class="sub">live, every frame</span></td><td>MediaPipe Pose (BlazePose), RTMPose, YOLO-pose</td><td>RTMPose-s 13.9 ms (Snapdragon 865); BlazePose Full 20–25 ms (Pixel 3 GPU); YOLOv8n-pose 58 fps (RK3588 NPU, one core)</td><td><span class="pill on">MediaPipe, RTMPose: Apache-2.0</span> <span class="pill off">Ultralytics YOLO: AGPL-3.0</span></td></tr>
+        <tr><td><b>Clothes mask</b><span class="sub">live</span></td><td>MediaPipe multi-class selfie segmenter (it has a "clothes" class)</td><td>Phone-class real time; no named-device figure found</td><td><span class="pill on">Apache-2.0</span></td></tr>
+        <tr><td><b>Live garment fit</b><span class="sub">preview</span></td><td>2D warping of the garment photo onto your pose; Snap's Clothing Try-On through Camera Kit (upper body, from one 2D image)</td><td>DM-VTON 40 fps (NVIDIA T4), at low resolution</td><td><span class="pill off">DM-VTON: non-commercial</span> <span class="pill">Snap: commercial terms</span></td></tr>
+        <tr><td><b>Photo-real look</b><span class="sub">on tap, cloud</span></td><td>FASHN API; Google Vertex AI Virtual Try-On; Kling/Kolors via fal.ai</td><td>5–17 s per image (FASHN)</td><td><span class="pill on">Paid APIs: US$0.06–0.075 per image</span></td></tr>
+        <tr><td><b>Photo-real look</b><span class="sub">self-hosted later</span></td><td>FASHN VTON v1.5 open weights (~2 GB, takes flat-lay photos); Leffa</td><td>Leffa about 6 s per image (A100)</td><td><span class="pill on">Apache-2.0 / MIT</span> <span class="pill warn">swap FASHN's bundled parser</span></td></tr>
+        <tr><td><b>Avoid for a product</b></td><td>IDM-VTON, OOTDiffusion, CatVTON, StableVITON, FitDiT, MagicTryOn; FLUX.1-dev-based try-on</td><td>Popular research models</td><td><span class="pill off">Non-commercial</span></td></tr>
+        <tr><td><b>Garment cut-out</b><span class="sub">wardrobe</span></td><td>BiRefNet or SAM 2</td><td>Runs once per garment</td><td><span class="pill on">MIT / Apache-2.0</span> <span class="pill off">rembg default model RMBG-2.0 needs a paid licence</span></td></tr>
+        <tr><td><b>Tags and stylist</b></td><td>A vision-language model to tag type, colour, pattern and formality; colour-harmony rules; outfit-compatibility models trained on Polyvore</td><td>Seconds per garment, once</td><td><span class="pill on">Polyvore code: BSD-3 / Apache-2.0</span></td></tr>
+        <tr><td><b>Live generative video</b><span class="sub">watch, don't build on yet</span></td><td>Decart Lucy 2.0 (used by LOOOK.AI); LiveVVT research paper (Aug 2026)</td><td>LiveVVT claims 22 fps (hardware not stated)</td><td><span class="pill warn">about US$0.05/s</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin:0;max-width:48rem">Target under 100 ms from camera to screen for the live view; research on virtual mirrors puts noticeable lag at roughly 75–125 ms. Phones can drive an external monitor only if their USB-C port carries video (confirmed for Pixel 8 and later and Samsung flagships), which is one more reason the tablet is the default kit.</p>
+</section>
+
+<section class="sec" id="kit">
+  <div class="sec-head">
+    <p class="eyebrow">The kit</p>
+    <h2>What goes on the mirror</h2>
+  </div>
+  <figure class="fig narrow">
+    <div class="canvas scroll-sm">
+      <svg class="dg" viewBox="0 0 620 440" role="img" aria-label="Side view of the kit on an existing mirror. A slim touchscreen is held on the mirror's front by removable mounting strips, with a camera at eye level at its top. One USB-C cable runs down to a certified adapter at the wall socket, the only part that carries 230 volts. The mirror glass, its silver backing and the almirah door or wall are untouched.">
+        <line class="ln" x1="20" y1="420" x2="600" y2="420"/>
+        <rect class="body" x="362" y="24" width="20" height="396"/>
+        <rect class="glass" x="346" y="50" width="14" height="330"/>
+        <rect x="360" y="50" width="2.5" height="330" style="fill:var(--muted)"/>
+        <rect class="chalk" x="340" y="132" width="6" height="16"/>
+        <rect class="chalk" x="340" y="298" width="6" height="16"/>
+        <rect class="screen" x="324" y="118" width="16" height="210"/>
+        <line x1="324" y1="118" x2="324" y2="328" style="stroke:var(--accent);stroke-width:2.5"/>
+        <rect class="box" x="324" y="96" width="18" height="16" rx="2"/>
+        <circle class="ink" cx="324" cy="104" r="4"/>
+        <circle class="head" cx="60" cy="112" r="8"/>
+        <circle class="ink" cx="64" cy="112" r="2"/>
+        <line class="ln-mu dash" x1="70" y1="112" x2="318" y2="104"/>
+        <text class="mu" x="190" y="128" text-anchor="middle">eye level</text>
+        <rect class="box" x="92" y="382" width="22" height="30" rx="3"/>
+        <circle class="ink" cx="100" cy="392" r="1.6"/><circle class="ink" cx="106" cy="392" r="1.6"/>
+        <rect class="box-hz" x="114" y="386" width="28" height="22" rx="3"/>
+        <path class="ln" d="M142 397 H332 V330"/>
+        <g class="ln-mu">
+          <line x1="318" y1="100" x2="306" y2="82"/>
+          <line x1="322" y1="166" x2="306" y2="166"/>
+          <line x1="322" y1="234" x2="306" y2="234"/>
+          <line x1="353" y1="70" x2="388" y2="70"/>
+          <line x1="343" y1="140" x2="388" y2="140"/>
+          <line x1="382" y1="256" x2="388" y2="256"/>
+        </g>
+        <text class="tl" x="300" y="70" text-anchor="end">Camera</text>
+        <text class="mu" x="300" y="84" text-anchor="end">tablet's own, or a webcam</text>
+        <text class="tl" x="300" y="162" text-anchor="end">Touch layer</text>
+        <text class="mu" x="300" y="176" text-anchor="end">built into the screen</text>
+        <text class="tl" x="300" y="230" text-anchor="end">Slim screen</text>
+        <text class="mu" x="300" y="244" text-anchor="end">tablet or portable monitor</text>
+        <text class="tl" x="240" y="374" text-anchor="middle">One USB-C cable</text>
+        <text class="mu" x="240" y="388" text-anchor="middle">20 V DC or less</text>
+        <text class="tl hz" x="118" y="352" text-anchor="middle">USB-C adapter</text>
+        <text class="mu" x="118" y="366" text-anchor="middle">the only 230 V part</text>
+        <text class="tl" x="392" y="66">Your existing mirror</text>
+        <text class="mu" x="392" y="80">glass + silver backing</text>
+        <text class="tl" x="392" y="136">Dock plate on tape</text>
+        <text class="mu" x="392" y="150">magnetic quick-release</text>
+        <text class="tl" x="392" y="252">Almirah door or wall</text>
+        <text class="mu" x="392" y="266">nothing drilled</text>
+      </svg>
+    </div>
+    <figcaption><b>Side view of the kit on a mirror you already own</b> (thickness exaggerated). A thin plate bonded to the front of the glass holds the screen magnetically, so it snaps off when you're done. The only 230 V part is the certified adapter at the wall socket. Tape on the front never touches the mirror's silver backing.</figcaption>
+  </figure>
+
+  <h3>Recommended kit: tablet on a magnetic dock</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Part</th><th>Pick</th><th>Why this one</th><th>Alternatives</th></tr></thead>
+      <tbody>
+        <tr><td><b>Dock</b></td><td>Steel or MagSafe-style plate bonded to the glass with VHB tape, a magnetic quick-release and a safety strap</td><td>3M's rule is about 57 cm² of tape per kg, so a small plate holds a tablet; the screen snaps off after use</td><td>Magnets straight onto a steel almirah door; suction only for phones (it leaks over time)</td></tr>
+        <tr><td><b>Screen, camera, computer</b></td><td>Budget 11″ Android tablet (Redmi Pad class)</td><td>One device does screen, camera, AI and battery: ₹11,499–13,999</td><td>15.6″ touch monitor (₹6,090–13,990, about 1 kg, 200–220 nits) driven by a phone with video-out</td></tr>
+        <tr><td><b>Camera</b></td><td>The tablet's front camera</td><td>Already there and already certified</td><td>95° webcam with privacy shutter (Lenovo 300, ₹2,375–2,450) mounted sideways: it then frames 2.85 m of height at 1.5 m instead of 1.61 m</td></tr>
+        <tr><td><b>Touch</b></td><td>The tablet's touchscreen</td><td>Nothing extra to stick on</td><td>IR frame (US$60–300 for 43″) for a whole touch mirror; a front-mounted capacitive film needs a bench test first</td></tr>
+        <tr><td><b>Power</b></td><td>BIS-registered 65 W USB-C PD adapter and one cable along the mirror edge</td><td>Keeps 230 V at the socket: ₹1,419–2,499</td><td>Tablet battery alone, charged elsewhere; a BIS-certified power bank (₹649–1,599)</td></tr>
+        <tr><td><b>Lighting</b></td><td>Optional clip-on LED, CRI 90+</td><td>The app judges colour, so the light on you must be colour-true</td><td>Daylight from a window</td></tr>
+        <tr><td><b>App</b></td><td>Wardrobe capture, live overlay on the tablet, HD looks from the cloud</td><td>The real product; the hardware is commodity</td><td>The same app on a phone in a ₹499 mirror dock</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="split">
+    <div class="prose">
+      <h3>Mounting rules</h3>
+      <ul>
+        <li><b>Under about 1.3 kg on tape,</b> always with a safety strap. Heavier 21.5–27″ panels (3–6.5 kg) need a hook, a cleat or a floor stand.</li>
+        <li><b>Tape goes on the front glass only.</b> Damage to the silver comes from solvent adhesives or acid-curing silicone on the back.</li>
+        <li><b>Mind the door.</b> Wardrobe hinges are rated for 4–6 kg doors on two hinges, so add no more than about 1 kg, and route the cable so the door can swing.</li>
+        <li><b>Leave an air gap.</b> A screen pressed against the glass can warm it by 10–20 °C; glass can crack when one area runs about 35 °C hotter than the rest (estimate).</li>
+        <li><b>Skip bathrooms</b> for any screen tier: humidity and splashes.</li>
+      </ul>
+    </div>
+    <div class="prose">
+      <h3>Typical Indian mirrors the kit must fit</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Mirror</th><th>Typical size</th></tr></thead>
+          <tbody>
+            <tr><td>Almirah door (Godrej 2-door, ~195 × 90 cm)</td><td class="mono">≈35–40 cm wide (est.)</td></tr>
+            <tr><td>Full-length wall mirror</td><td class="mono">≈5 ft, or 90 × 180 cm</td></tr>
+            <tr><td>Dressing-table mirror</td><td class="mono">e.g. 80 × 60 cm</td></tr>
+            <tr><td>Bathroom mirror</td><td class="mono">12 × 18″ to 15 × 18″</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">An 11″ tablet or a 15.6″ monitor fits all of them. Narrow almirah mirrors leave no room beside your reflection, which is why the dock snaps off.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="safety">
+  <div class="sec-head">
+    <p class="eyebrow">Electrical safety</p>
+    <h2>Only 20 V reaches the mirror</h2>
+  </div>
+  <figure class="fig">
+    <div class="canvas scroll">
+      <svg class="dg" viewBox="0 0 940 280" role="img" aria-label="Kit power layout. A wall socket on a 30 milliamp RCCB feeds a sealed, double-insulated USB-C power adapter, the only part that carries 230 volts. One USB-C cable at 20 volts DC or less runs to the mirror, where it powers the screen, a phone or mini PC, and the camera and touch parts. The user touches only low-voltage parts and glass.">
+        <defs>
+          <marker id="ah-kp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink"/></marker>
+        </defs>
+        <rect class="box" x="16" y="100" width="150" height="84" rx="4"/>
+        <text class="tt" x="28" y="124">Wall socket</text>
+        <text x="28" y="146">230 V AC, 50 Hz</text>
+        <text x="28" y="164">on a 30 mA RCCB</text>
+        <line class="ln" x1="166" y1="142" x2="249" y2="142" marker-end="url(#ah-kp)"/>
+        <text x="208" y="134" text-anchor="middle">plug</text>
+        <rect class="zone-hz" x="236" y="56" width="234" height="172" rx="6"/>
+        <text class="cap hz" x="250" y="80">230 V STAYS HERE</text>
+        <text class="mu" x="250" y="97">sealed by its maker</text>
+        <rect class="box" x="252" y="112" width="202" height="84" rx="4"/>
+        <text class="tt" x="264" y="136">USB-C power adapter</text>
+        <text x="264" y="158">230 V AC → 5–20 V DC</text>
+        <text x="264" y="176">BIS-registered, Class II</text>
+        <line class="ln" x1="454" y1="154" x2="609" y2="154" marker-end="url(#ah-kp)"/>
+        <text x="527" y="146" text-anchor="middle">one USB-C cable</text>
+        <rect class="zone-ac" x="590" y="24" width="230" height="236" rx="6"/>
+        <text class="cap ac" x="602" y="46">ON THE MIRROR</text>
+        <text class="mu" x="602" y="62">20 V DC and below</text>
+        <line class="bus" x1="612" y1="84" x2="612" y2="236"/>
+        <g class="ln">
+          <line x1="612" y1="104" x2="632" y2="104"/>
+          <line x1="612" y1="156" x2="632" y2="156"/>
+          <line x1="612" y1="208" x2="632" y2="208"/>
+        </g>
+        <rect class="box" x="632" y="84" width="176" height="40" rx="4"/>
+        <text class="tl" x="644" y="109">Tablet or screen</text>
+        <text x="796" y="109" text-anchor="end">5–20 V</text>
+        <rect class="box" x="632" y="136" width="176" height="40" rx="4"/>
+        <text class="tl" x="644" y="161">Phone or mini PC</text>
+        <text x="796" y="161" text-anchor="end">5–20 V</text>
+        <rect class="box" x="632" y="188" width="176" height="40" rx="4"/>
+        <text class="tl" x="644" y="213">Camera, touch</text>
+        <text x="796" y="213" text-anchor="end">5 V</text>
+        <rect class="glass" x="842" y="70" width="10" height="180"/>
+        <rect class="body" x="854" y="150" width="56" height="14" rx="7"/>
+        <rect class="body" x="892" y="138" width="44" height="38" rx="12"/>
+        <text class="tl" x="890" y="206" text-anchor="middle">You touch</text>
+        <text x="890" y="222" text-anchor="middle">≤ 20 V only</text>
+        <text class="mu" x="236" y="252">double-insulated: no earth wire needed</text>
+      </svg>
+    </div>
+    <figcaption><b>Power layout for the kit.</b> Mains voltage never reaches the mirror. A certified, double-insulated USB-C adapter at the socket is the only 230 V part, and everything on the glass runs at 20 V DC or less, well inside the 60 V DC that IEC 62368-1 classes as safe to touch (ES1).</figcaption>
+  </figure>
+  <div class="split">
+    <div class="prose">
+      <h3>Design rules</h3>
+      <ul>
+        <li><b>Mains stays in the adapter.</b> Use a BIS-registered USB-C adapter; adapters and power banks are compulsory categories under India's BIS registration scheme.</li>
+        <li><b>Everything on the mirror runs at 20 V DC or less.</b> No hand-wired mains anywhere in the kit.</li>
+        <li><b>The likelier injury is a fall, not a shock.</b> US data puts furniture and TV tip-overs at about 17,800 injuries a year, 44% of them children. Hence the weight limit and the strap.</li>
+        <li><b>If you ever use LED film:</b> it runs at 5 V but draws 20–60 A for half a square metre at full brightness, so connectors and wiring become a fire risk. Use rated wiring, fuses and a certified supply.</li>
+        <li><b>Batteries:</b> the tablet's own certified battery is fine. Don't add large DIY lithium packs.</li>
+        <li><b>Plug into a socket on a 30 mA RCCB</b> where you can: extra protection for the home.</li>
+      </ul>
+    </div>
+    <div class="prose">
+      <h3>Certification if you sell it</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Where</th><th>What applies</th></tr></thead>
+          <tbody>
+            <tr><td>India, adapters and batteries</td><td>BIS compulsory registration; bundle only already-registered adapters and power banks.</td></tr>
+            <tr><td>India, a dock with electronics</td><td>IS/IEC 62368-1:2023, which MeitY notified on 7 Nov 2025. A passive magnetic dock carries no electronics. Get a written ruling from BIS/MeitY for anything else.</td></tr>
+            <tr><td>India, radio and e-waste</td><td>WPC approval for Wi-Fi/Bluetooth (a bundled tablet already has it) and CPCB e-waste registration before sale (not verified in this research).</td></tr>
+            <tr><td>US / EU</td><td>FCC Part 15 and UL 62368-1; CE marking with RoHS and WEEE.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Selling a dock plus a bundled, already-certified tablet keeps your own certification work small. A custom screen-and-camera unit would need its own testing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="privacy">
+  <div class="sec-head">
+    <p class="eyebrow">Privacy</p>
+    <h2>A camera where people change clothes</h2>
+  </div>
+  <div class="split">
+    <div class="prose">
+      <p>This is the product's biggest trust problem. The camera faces the place people dress, and many target users are under 18. A tablet you can snap off and put away already helps; build the rest into the app and the dock.</p>
+      <ul>
+        <li><b>Camera off by default.</b> It starts only when you begin a try-on, and a cover or shutter is part of the dock.</li>
+        <li><b>On the device by default.</b> The live view never leaves the tablet. An HD look sends one photo to a cloud API only after you opt in, and only to a provider whose data-retention terms you have checked.</li>
+        <li><b>No human review and no model training</b> on customer images. Encrypt stored photos and offer one-tap delete.</li>
+        <li><b>Core features work offline,</b> so the kit keeps working if the company or its cloud service disappears.</li>
+      </ul>
+    </div>
+    <div class="prose">
+      <h3>India's DPDP law: dates that matter</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>When</th><th>What applies</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">13 Nov 2025</td><td>DPDP Rules notified; Data Protection Board provisions in force</td></tr>
+            <tr><td class="mono">~Nov 2026</td><td>Consent-manager provisions (12 months after notification)</td></tr>
+            <tr><td class="mono">~13 May 2027</td><td>Most company duties (18 months): notice and consent, security safeguards, breach reporting within 72 hours</td></tr>
+            <tr><td>Users under 18</td><td>Verifiable parental consent; no tracking or targeted ads (from the Act; not re-checked in this research)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cost">
+  <div class="sec-head">
+    <p class="eyebrow">Cost</p>
+    <h2>From ₹499 to about ₹17,700</h2>
+  </div>
+  <div class="prose">
+    <p>Indian price bands set the targets. Phone accessories sell at ₹300–2,500, gadgets at ₹10,000–20,000 (an Echo Show 5 is ₹10,999), and display smart mirrors start around ₹30,000. A dock for the phone people already own fits the accessory band; a tablet kit has to land around ₹12,000–16,000.</p>
+  </div>
+  <div class="table-wrap">
+    <table class="bars">
+      <thead><tr><th>Kit</th><th class="num">₹ thousand</th><th class="bar-h"><div class="ticks" aria-hidden="true"><span>0</span><span style="left:25%">15k</span><span style="left:50%">30k</span><span style="left:75%">45k</span><span>60k</span></div></th><th>What you get</th></tr></thead>
+      <tbody>
+        <tr><td><b>1 · Mirror dock</b><span class="sub">for the user's own phone or tablet</span></td><td class="num">0.5–1.5</td><td class="bar"><div class="rbar" title="₹499–1,499"><span class="est" style="left:0.83%;width:1.67%"></span></div></td><td>App plus a dock; the phone is screen, camera and computer</td></tr>
+        <tr><td><b>2A · Monitor + your phone</b><span class="sub">15.6″ touch monitor</span></td><td class="num">8.4–18.6</td><td class="bar"><div class="rbar" title="₹8,400–18,600"><span class="est" style="left:14%;width:17%"></span></div></td><td>Bigger screen; only for phones with video-out</td></tr>
+        <tr class="pick"><td><b>2C · Tablet kit</b><span class="sub">recommended</span></td><td class="num">12.0–17.7</td><td class="bar"><div class="rbar" title="₹12,000–17,700"><span class="est" style="left:20%;width:9.5%"></span></div></td><td>Budget 11″ tablet, dock, strap, adapter</td></tr>
+        <tr><td><b>3 · 21.5–27″ panel</b><span class="sub">hook, cleat or stand</span></td><td class="num">15.0–52.0</td><td class="bar"><div class="rbar" title="₹15,000–52,000"><span class="est" style="left:25%;width:61.67%"></span></div></td><td>Shows you at about half to two-thirds of your reflection's size</td></tr>
+        <tr><td><b>2B · Monitor + Raspberry Pi 5</b></td><td class="num">24.3–39.1</td><td class="bar"><div class="rbar" title="₹24,300–39,100"><span class="est" style="left:40.5%;width:24.67%"></span></div></td><td>Costs more than a tablet and adds support work; skip</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin:0">All kit totals are estimates built from sourced part prices (2025–2026 Indian listings). For comparison, the full-mirror prototype costs ₹1,07,000–1,69,000, off this chart's scale.</p>
+
+  <div class="split">
+    <div class="prose">
+      <h3>Running costs</h3>
+      <ul>
+        <li><b>Live view:</b> nothing per use, because it runs on the tablet.</li>
+        <li><b>HD looks through an API:</b> US$0.06–0.075 each, about ₹6–7. Five a day for a month is roughly ₹800–1,000 per active user, so plan a ₹99–199 monthly subscription or render packs (estimate).</li>
+        <li><b>Your own GPU instead:</b> an L4 rents for US$0.59–0.97 an hour. An always-on GPU beats the API above roughly 5,700–9,400 looks a month.</li>
+        <li><b>Live photo-real video</b> at about US$0.05 a second is far too expensive for home use today; it needs to get roughly 150 times cheaper.</li>
+      </ul>
+    </div>
+    <div class="prose">
+      <h3>Building the team</h3>
+      <ul>
+        <li><b>Salaries in India (AmbitionBox, 2025):</b> computer-vision engineers ₹3.3–22 lakh a year (senior ₹20–45 lakh), ML engineers ₹3.5–25 lakh, embedded engineers about ₹2–16 lakh.</li>
+        <li><b>The kit needs less hardware work than a mirror:</b> mostly an app, a dock and packaging. You on the app and front end plus one CV/ML engineer is a workable start.</li>
+        <li><b>Grants worth checking:</b> DST NIDHI-PRAYAS (up to ₹10 lakh, aimed at prototypes), MeitY TIDE 2.0 (up to ₹7 lakh), MeitY SAMRIDH (up to ₹40 lakh), Startup India Seed Fund (₹20 lakh grant; status after 2025 unconfirmed).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="plan">
+  <div class="sec-head">
+    <p class="eyebrow">Build plan</p>
+    <h2>App first, dock second, glass never</h2>
+    <p class="muted" style="margin:0">The kit is mostly software, so each step costs little and can stop the idea cheaply if it isn't working.</p>
+  </div>
+  <ol class="steps">
+    <li class="step"><span class="when">1 · Weeks 1–2</span><h3>Check the problem</h3><p class="small">Survey 300–500 people aged 16–30 and run a one-to-two-week dressing diary: minutes per session, outfits tried, which occasions. Move on only if long try-on sessions recur weekly.</p></li>
+    <li class="step"><span class="when">2 · Weeks 2–5</span><h3>Laptop rig</h3><p class="small">Webcam rotated 90°, a screen on its side, MediaPipe pose and clothes mask, live recolouring, a 2D overlay of 20 of your own garments, and FASHN API snapshots. Under ₹10,000; 100 API images cost about ₹660.</p></li>
+    <li class="step"><span class="when">3 · Weeks 5–12</span><h3>App and ₹499 dock</h3><p class="small">Wardrobe capture, outfit ideas by colour, dress code, weather and occasion, and HD looks, on a phone or tablet in a mirror dock. Test with 30–50 people. Move on when they come back weekly without reminders.</p></li>
+    <li class="step"><span class="when">4 · Months 3–5</span><h3>Tablet kit</h3><p class="small">Magnetic plate, strap, adapter and a bundled budget tablet at ₹12,000–16,000. Bench-test a capacitive touch film on a real mirror if whole-mirror touch matters.</p></li>
+    <li class="step"><span class="when">5 · Month 5 on</span><h3>Sell and decide</h3><p class="small">Sell to the first 50–100 users, or pilot in two to five ethnic-wear showrooms. Apply for NIDHI-PRAYAS or TIDE 2.0. Get a patent freedom-to-operate opinion before raising money.</p></li>
+  </ol>
+  <p class="note small">Two patent families need checking: ACI Holdings' US 11,602,232 and US 12,426,728 (smart mirrors that display clothing recommendations) and Snap's US 11,880,947 (real-time garment exchange on live video). Their claims were not read in this research.</p>
+</section>
+
+<details class="more" id="full-mirror">
+  <summary>
+    <span class="eyebrow">Full-mirror version, for comparison</span>
+    <h2>The complete smart mirror researched first</h2>
+    <span class="toggle">Show the full-mirror findings</span>
+  </summary>
+  <div class="inner">
+    <div class="prose">
+      <p>The first version of this brief designed a whole new mirror: two-way glass with a 43–55-inch screen behind it, a Jetson AI computer and an IR touch frame. It works, using the same flipped-video trick, but the prototype costs ₹1.07–1.69 lakh (about US$1,200–1,900 at ₹88 per US$), and the retail price would land where Lululemon's MIRROR failed.</p>
+    </div>
+    <figure class="fig narrow">
+      <div class="canvas scroll-sm">
+        <svg class="dg" viewBox="0 0 600 532" role="img" aria-label="Side cut-away of the full smart mirror. The user stands 1.5 to 2 metres away. From front to back: an infrared touch frame whose light beams skim the glass, smart-mirror glass with a black backing, a camera at eye level behind the glass, a 43 to 55 inch portrait screen, an AI computer, and a sealed 230-volt power box at the bottom.">
+          <defs>
+            <marker id="ah-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink"/></marker>
+          </defs>
+          <line class="ln-mu" x1="36" y1="520" x2="36" y2="40"/>
+          <g class="ln-mu">
+            <line x1="31" y1="520" x2="41" y2="520"/>
+            <line x1="31" y1="400" x2="41" y2="400"/>
+            <line x1="31" y1="280" x2="41" y2="280"/>
+            <line x1="31" y1="160" x2="41" y2="160"/>
+            <line x1="31" y1="40" x2="41" y2="40"/>
+          </g>
+          <g class="mu" text-anchor="end">
+            <text x="27" y="524">0</text>
+            <text x="27" y="404">50</text>
+            <text x="27" y="284">100</text>
+            <text x="27" y="164">150</text>
+            <text x="27" y="44">200</text>
+          </g>
+          <text class="mu" x="36" y="28" text-anchor="middle">cm</text>
+          <line class="ln" x1="36" y1="520" x2="590" y2="520"/>
+          <rect class="body" x="102" y="286" width="20" height="230" rx="6"/>
+          <ellipse class="body" cx="118" cy="517" rx="14" ry="3.5"/>
+          <rect class="body" x="96" y="142" width="32" height="150" rx="10"/>
+          <rect class="body" x="107" y="134" width="10" height="12"/>
+          <circle class="head" cx="112" cy="122" r="15"/>
+          <circle class="ink" cx="122" cy="120" r="2"/>
+          <line class="ln-mu dash" x1="126" y1="120" x2="258" y2="107"/>
+          <text class="mu" x="190" y="104" text-anchor="middle">eye level</text>
+          <line class="ln" x1="140" y1="500" x2="240" y2="500" marker-start="url(#ah-s)" marker-end="url(#ah-s)"/>
+          <text x="190" y="492" text-anchor="middle">1.5–2 m away</text>
+          <rect class="glass" x="250" y="52" width="7" height="408"/>
+          <rect class="ink" x="242" y="46" width="9" height="12"/>
+          <rect class="ink" x="242" y="454" width="9" height="12"/>
+          <line class="ln-ac dot" x1="246" y1="62" x2="246" y2="450"/>
+          <rect class="ink" x="257" y="52" width="3" height="44"/>
+          <rect class="ink" x="257" y="118" width="3" height="6"/>
+          <rect class="ink" x="257" y="352" width="3" height="108"/>
+          <rect class="box" x="262" y="100" width="16" height="14" rx="2"/>
+          <circle class="ink" cx="263" cy="107" r="3.5"/>
+          <rect class="screen" x="262" y="124" width="12" height="228"/>
+          <rect class="box" x="284" y="364" width="30" height="34" rx="2"/>
+          <text class="sm" x="299" y="385" text-anchor="middle">AI</text>
+          <rect class="box-hz" x="280" y="408" width="38" height="46" rx="2"/>
+          <text class="sm hz" x="299" y="435" text-anchor="middle">230V</text>
+          <rect class="ink" x="244" y="468" width="12" height="6"/>
+          <path class="ln" d="M242 46 H290 M306 46 H322 V466 H306 M290 466 H242"/>
+          <line class="ln-mu" x1="298" y1="44" x2="298" y2="27" marker-end="url(#ah-s)"/>
+          <g class="ln-mu">
+            <line x1="304" y1="38" x2="346" y2="38"/>
+            <line x1="248" y1="62" x2="346" y2="82"/>
+            <line x1="279" y1="107" x2="346" y2="112"/>
+            <line x1="255" y1="176" x2="346" y2="174"/>
+            <line x1="275" y1="238" x2="346" y2="240"/>
+            <line x1="323" y1="300" x2="346" y2="300"/>
+            <line x1="315" y1="381" x2="346" y2="380"/>
+            <line x1="319" y1="431" x2="346" y2="432"/>
+            <line x1="256" y1="471" x2="346" y2="486"/>
+          </g>
+          <text class="tl" x="352" y="34">Vents top and bottom</text>
+          <text class="mu" x="352" y="49">air rises through the case</text>
+          <text class="tl" x="352" y="78">IR touch frame</text>
+          <text class="mu" x="352" y="93">light beams just above the glass</text>
+          <text class="tl" x="352" y="116">Camera at eye level</text>
+          <text class="mu" x="352" y="131">behind the glass; light + shutter</text>
+          <text class="tl" x="352" y="170">Smart-mirror glass, 5–6 mm</text>
+          <text class="mu" x="352" y="185">black backing where no screen</text>
+          <text class="tl" x="352" y="236">43–55″ screen, portrait</text>
+          <text class="mu" x="352" y="251">only the lit area shows through</text>
+          <text class="tl" x="352" y="296">Back fixed to the wall</text>
+          <text class="mu" x="352" y="311">bracket + anti-tip strap</text>
+          <text class="tl" x="352" y="376">AI computer</text>
+          <text class="mu" x="352" y="391">Jetson-class, quiet cooling</text>
+          <text class="tl hz" x="352" y="428">Sealed 230 V power box</text>
+          <text class="mu" x="352" y="443">one cord in; the rest ≤ 24 V</text>
+          <text class="tl" x="352" y="482">Presence sensor</text>
+          <text class="mu" x="352" y="497">wakes the mirror as you walk up</text>
+        </svg>
+      </div>
+      <figcaption><b>Side cut-away of the full mirror.</b> Heights are to scale; depth and the user's distance are not. The screen sits behind two-way glass and shows a flipped video of you; the rest of the glass stays a mirror. Mains power stays in one sealed box at the bottom.</figcaption>
+    </figure>
+
+    <div class="split">
+      <div class="prose">
+        <h3>Why the full mirror needs special glass</h3>
+        <p>Behind a two-way mirror the screen has to outshine your reflection, and ordinary mirror-TV glass lets so little light through that a normal TV loses to the reflection of a white shirt. A 50/50 glass with a bright 500–700-nit panel is the minimum. A stick-on screen avoids this problem entirely, because nothing sits behind the glass.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Mirror glass</th><th class="num">Reflects</th><th class="num">Passes</th><th class="num">Screen needed</th></tr></thead>
+          <tbody>
+            <tr><td>Standard mirror-TV glass<span class="sub">e.g. Pilkington MirroView</span></td><td class="num">~70%</td><td class="num">~21%</td><td class="num">~1,060 nits</td></tr>
+            <tr><td>Acrylic two-way sheet</td><td class="num">~70%</td><td class="num">~30%</td><td class="num">~740 nits</td></tr>
+            <tr><td><b>50/50 mirror glass</b></td><td class="num">~50%</td><td class="num">~37%</td><td class="num"><b>~430 nits</b></td></tr>
+            <tr><td>Bright-room dielectric glass</td><td class="num">~40%</td><td class="num">~60%</td><td class="num">~210 nits</td></tr>
+            <tr><td>Polariser mirror film</td><td class="num">~55%</td><td class="num">~90%*</td><td class="num">~195 nits</td></tr>
+          </tbody>
+        </table>
+        <p class="small muted" style="margin:8px 0 0">Estimate for a 500-lux room and mid-tone clothes, with garment pixels 5× brighter than the reflection. *Of the screen's polarised light.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="bars">
+        <thead><tr><th>Full-mirror prototype part</th><th class="num">₹ thousand</th><th class="bar-h"><div class="ticks" aria-hidden="true"><span>0</span><span style="left:25%">10k</span><span style="left:50%">20k</span><span style="left:75%">30k</span><span>40k</span></div></th><th>Price basis</th></tr></thead>
+        <tbody>
+          <tr><td>Touch frame, 55″ IR, imported</td><td class="num">19.7–36.7</td><td class="bar"><div class="rbar" title="₹19,700–36,700"><span class="src" style="left:49.25%;width:42.5%"></span></div></td><td class="small">US$160–298 listings + assumed duty and shipping</td></tr>
+          <tr><td>Screen, 55″ 4K TV</td><td class="num">26.7–34.0</td><td class="bar"><div class="rbar" title="₹26,700–34,000"><span class="src" style="left:66.75%;width:18.25%"></span></div></td><td class="small">Indian listings, Jun–Jul 2026</td></tr>
+          <tr><td>AI computer, Jetson Orin Nano Super kit</td><td class="num">30.0–32.5</td><td class="bar"><div class="rbar" title="₹30,000–32,500"><span class="src" style="left:75%;width:6.25%"></span></div></td><td class="small">Indian listing; NVIDIA raised Jetson prices in Jul 2026</td></tr>
+          <tr><td>Mirror glass, 50/50, 6 mm toughened</td><td class="num">5–15</td><td class="bar"><div class="rbar" title="₹5,000–15,000, estimate"><span class="est" style="left:12.5%;width:25%"></span></div></td><td class="small">Estimate: no price found</td></tr>
+          <tr><td>Frame, fans, wall mount</td><td class="num">5–15</td><td class="bar"><div class="rbar" title="₹5,000–15,000, estimate"><span class="est" style="left:12.5%;width:25%"></span></div></td><td class="small">Estimate</td></tr>
+          <tr><td>Colour-checker card</td><td class="num">8–12</td><td class="bar"><div class="rbar" title="₹8,000–12,000, estimate"><span class="est" style="left:20%;width:10%"></span></div></td><td class="small">Estimate</td></tr>
+          <tr><td>Camera, Logitech C920s</td><td class="num">7.0–8.0</td><td class="bar"><div class="rbar" title="₹6,999–7,999"><span class="src" style="left:17.5%;width:2.5%"></span></div></td><td class="small">Indian listing</td></tr>
+          <tr><td>Lighting, audio, storage, sensor</td><td class="num">5.6–15.6</td><td class="bar"><div class="rbar" title="₹5,600–15,600, estimate"><span class="est" style="left:14%;width:25%"></span></div></td><td class="small">Estimates</td></tr>
+          <tr class="total"><td>Total</td><td class="num">107–169</td><td colspan="2">Without the touch frame: ₹87,000–1,32,000. Budget build (43″ TV, Raspberry Pi 5): ₹52,000–93,000.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin:0"><span class="key src"></span> price found in a listing &nbsp; <span class="key est"></span> estimate, no listing found. At 1,000 units the full mirror would cost about US$940–1,590 each to build.</p>
+  </div>
+</details>
+
+<section class="sec" id="sources">
+  <div class="sec-head">
+    <p class="eyebrow">Sources</p>
+    <h2>Where the facts come from</h2>
+    <p class="muted" style="margin:0">The main sources behind each section. Many were read as search-result summaries rather than full pages, so check a figure at its source before you rely on it.</p>
+  </div>
+  <div class="src-groups">
+    <div>
+      <h3>Sticker and kit</h3>
+      <ul class="sources">
+        <li><a href="https://www.kickstarter.com/projects/mirroplay/mirrorplay-magsafe-phone-holder-for-home-fitness-and-yoga">Kickstarter: MirrorPlay mirror phone holder</a></li>
+        <li><a href="https://gizmodo.com/the-super-thin-and-lightweight-espresso-display-is-a-wf-1846595209">Gizmodo: espresso thin display</a></li>
+        <li><a href="https://www.avnation.tv/2025/06/18/no-cords-no-holes-no-limits-displace-shows-off-the-future-of-tv-at-infocomm-2025/">AVNation: Displace suction-mounted TV</a></li>
+        <li><a href="https://theclipout.com/peloton-guide-discontinued/">The Clip Out: Peloton Guide discontinued</a></li>
+        <li><a href="https://www.etvbharat.com/en/!technology/xiaomi-redmi-pad-2-with-2-dot-5k-display-and-9000mah-battery-launched-in-india-enn25061901701">ETV Bharat: Redmi Pad 2 India launch</a></li>
+        <li><a href="https://riitek.in/products/touch-15-6">Riitek: 15.6″ portable touch monitor</a></li>
+        <li><a href="https://store.lenovo.com/in/en/lenovo-300-fhd-webcam-gxc1b34793-387.html">Lenovo India: Lenovo 300 webcam</a></li>
+        <li><a href="https://multimedia.3m.com/mws/media/1400379O/3m-vhb-tape-design-guide.pdf">3M: VHB tape design guide</a></li>
+        <li><a href="https://www.bajajfinserv.in/hindi/bmall/godrej-interio-2-door-crca-steel-almirah-wardrobe-30161803sd01019-blush-red/p/98364">Godrej 2-door steel almirah listing</a></li>
+        <li><a href="https://anchorit.gov/2024/02/08/ahead-of-sundays-game-cpsc-reminds-families-to-tackle-the-deadly-hazard-of-tv-and-furniture-tip-overs">CPSC: TV and furniture tip-overs</a></li>
+        <li><a href="https://androidauthority.com/google-pixel-8-display-port-3376141">Android Authority: Pixel 8 video out</a></li>
+        <li><a href="https://press.aboutamazon.com/in/news/devices/2025/9/amazon-launches-third-generation-echo-show-5-smart-display-with-alexa-in-india">Amazon India: Echo Show 5 price</a></li>
+      </ul>
+      <h3>Overlay films and touch</h3>
+      <ul class="sources">
+        <li><a href="https://www.bhphotovideo.com/c/product/1869844-REG/lg_ltak140_gu_transparent_led_film.html">B&amp;H: LG LTAK140 transparent LED film</a></li>
+        <li><a href="https://swx-led.com/transparent-led-film/">SWX: transparent LED film pitches</a></li>
+        <li><a href="https://www.indiamart.com/proddetail/transparent-led-adhesive-screen-26498987888.html">IndiaMART: transparent LED adhesive screen</a></li>
+        <li><a href="https://wes-electronic.de/en/news/blog/magic-mirror-touchscreen-behind-glass-or-mirror">WES Electronic: touch behind glass or mirror</a></li>
+        <li><a href="https://cdn2.hubspot.net/hubfs/364008/Touch_Foil_visualplanet_brochure.pdf?t=1463085216389">Visualplanet: TouchFoil brochure</a></li>
+        <li><a href="https://keetouch.eu/en/kf-430-p00001">Keetouch: 43″ IR touch frame</a></li>
+        <li><a href="https://store.clearpathrobotics.com/products/hokuyo-ust-10lx">Clearpath: Hokuyo UST-10LX</a></li>
+        <li><a href="https://solutions.lg.com/us/digital-signage/lg-30ew5tp-a">LG: 30″ transparent OLED signage</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Products and apps</h3>
+      <ul class="sources">
+        <li><a href="https://www.ces.tech/ces-innovation-awards/2026/heymirror-smart-dressing-mirror/">CES Innovation Awards 2026: HEYMIRROR</a></li>
+        <li><a href="https://retailtechinnovationhub.com/home/2026/3/19/loookai-goes-live-with-real-time-ai-powered-clothing-try-on-feature-for-smart-mirrors">Retail Tech Innovation Hub: LOOOK.AI goes live</a></li>
+        <li><a href="https://techcrunch.com/2020/05/29/echo-looks-will-cease-functioning-in-july-as-amazon-discontinues-the-camera">TechCrunch: Echo Look discontinued (2020)</a></li>
+        <li><a href="https://patents.google.com/patent/US9858719">Google Patents: US 9,858,719</a></li>
+        <li><a href="https://www.retailtouchpoints.com/news/citing-rise-of-generative-ai-snap-nixes-ares-white-label-ar-offering/137870/">Retail TouchPoints: Snap closes ARES</a></li>
+        <li><a href="https://www.cbinsights.com/company/memomi-labs">CB Insights: MemoMi Labs</a></li>
+        <li><a href="https://connectthewatts.com/2023/10/03/lululemon-cancels-fitness-mirror/">Connect the Watts: Lululemon cancels MIRROR</a></li>
+        <li><a href="https://blog.google/intl/en-in/products/virtual-apparel-try-on-tool-comes-to-india/">Google India: apparel try-on comes to India</a></li>
+        <li><a href="https://jetstream.blog/en/google-doppl-shut-down-end-of-april-2026/">Jetstream: Google Doppl shuts down</a></li>
+        <li><a href="https://glance.com/us/newsroom/pressrelease/glance-ai-launches-ai-native-commerce-platform-for-hyper-real-visual-shopping">Glance: Glance AI launch</a></li>
+        <li><a href="https://fashionunited.com/news/business/alta-raises-11-million-in-seed-funding-for-ai-powered-personal-shopping-styling-app/2025061766632">FashionUnited: Alta raises US$11M</a></li>
+        <li><a href="https://tech.eu/2026/07/07/whering-lands-7m-as-digital-wardrobe-platform-reaches-10m-users/">Tech.eu: Whering, US$7M and 10M users</a></li>
+        <li><a href="https://patents.google.com/patent/US12426728">Google Patents: US 12,426,728</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>AI, safety, privacy and market</h3>
+      <ul class="sources">
+        <li><a href="https://help.fashn.ai/plans-and-pricing/api-pricing">FASHN: API pricing</a></li>
+        <li><a href="https://cloudprice.net/models/google-virtual-try-on-1">Cloudprice: Google Virtual Try-On pricing</a></li>
+        <li><a href="https://storage.googleapis.com/mediapipe-assets/Model%20Card%20Multiclass%20Segmentation.pdf">MediaPipe multiclass segmentation model card</a></li>
+        <li><a href="https://github.com/yisol/IDM-VTON">IDM-VTON repository and licence</a></li>
+        <li><a href="https://github.com/franciszzj/Leffa/blob/main/LICENSE">Leffa licence</a></li>
+        <li><a href="https://www.alphaxiv.org/abs/2608.26714">LiveVVT paper (arXiv 2608.26714)</a></li>
+        <li><a href="https://dl.acm.org/doi/10.1145/2993369.2993381">Waltemate et al. 2016: latency in virtual mirrors</a></li>
+        <li><a href="https://matrixtestlabs.com/blog/meity-announces-migration-to-isiec-62368-12023-a-major-shift-for-electronics-it-product-compliance">Matrix Test Labs: India moves to IS/IEC 62368-1:2023</a></li>
+        <li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014&amp;reg=3&amp;lang=2">PIB: DPDP Rules notified</a></li>
+        <li><a href="https://www.hellomagazine.com/fashion/news/451466/women-six-months-deciding-what-wear/">Hello Magazine: M&amp;S outfit-choice survey</a></li>
+        <li><a href="https://clothingresearch.oslomet.no/2024/02/27/wardrobe-size-volume-of-clothing-and-shopping-practices-in-india/">OsloMet: wardrobes in India</a></li>
+        <li><a href="https://fashionunited.uk/news/fashion/h-m-2026-study-fashion-between-self-expression-and-social-pressure/2026052288218">FashionUnited: H&amp;M 2026 study</a></li>
+        <li><a href="https://www.businesstoday.in/magazine/editors-note/story/the-gen-z-consumer-beyond-cliches-512292-2026-01-22">Business Today: Gen Z consumer survey</a></li>
+        <li><a href="https://www.ambitionbox.com/profile/computer-vision-engineer-salary">AmbitionBox: computer-vision salaries</a></li>
+        <li><a href="https://www.mysmartprice.com/electronics/pricelist/50-inch-led-tv-price-list-in-india.html">MySmartPrice: TV prices in India</a></li>
+        <li><a href="https://www.cnx-software.com/2026/07/22/nvidia-increases-the-price-of-jetson-modules-and-devkits-by-up-to-101/">CNX Software: Jetson price rise (Jul 2026)</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin:0">Researched on 16 October 2026: six research tracks for the full mirror, then two more for the sticker kit. Web pages could not be opened directly during this session, so most facts come from search-result summaries of the cited pages. Prices are 2025–2026 listings. Kit figures convert at ₹96 per US$ (July 2026 rate); the full-mirror figures used ₹88. Totals marked as estimates were built from sourced part prices. Confirm prices, standards and legal duties before spending money.</p>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var STD = [32, 40, 43, 50, 55, 65, 75];
+  function $(id) { return document.getElementById(id); }
+  function update() {
+    var h = parseFloat($('calc-h').value), dm = parseFloat($('calc-d').value), sh = parseFloat($('calc-s').value);
+    if (!(h >= 100 && h <= 230) || !(dm >= 0.5 && dm <= 5) || !(sh > 0)) return;
+    var eye = h * 0.936, refl = h / 2, need = refl * 1.08;
+    var shown = Math.min(sh / 1.08, refl);
+    var diag = need / 0.8716 / 2.54;
+    var size = STD.find(function (s) { return s >= diag; }) || STD[STD.length - 1];
+    var d = dm * 100, deg = 180 / Math.PI;
+    var down = Math.atan(eye / d) * deg, up = Math.atan((h - eye) / d) * deg;
+    $('o-refl').textContent = Math.round(refl) + ' cm';
+    $('o-on').textContent = Math.round(shown) + ' cm';
+    $('o-pct').textContent = Math.round(shown / refl * 100) + '%';
+    $('o-size').textContent = size + '-inch';
+    $('o-diag').textContent = '(' + diag.toFixed(1) + '″ minimum)';
+    $('o-fov1').textContent = Math.round(2 * down) + '°';
+    $('o-fov2').textContent = Math.round((down + up) * 1.1) + '°';
+    $('o-tilt').textContent = Math.round((down - up) / 2) + '°';
+  }
+  ['calc-h', 'calc-d', 'calc-s'].forEach(function (id) { $(id).addEventListener('input', update); $(id).addEventListener('change', update); });
+  update();
+
+  document.querySelectorAll('button[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = $(btn.getAttribute('data-copy'));
+      var label = btn.textContent;
+      function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = label; }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Selected, press Ctrl+C';
+        setTimeout(function () { btn.textContent = label; }, 2400);
+      }
+      try { navigator.clipboard.writeText(el.innerText).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
